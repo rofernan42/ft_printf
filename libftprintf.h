@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/04 16:01:37 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:09:34 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef	struct	s_printf
 	int				c;
 	char			*str; //*s, *x, *X
 	void			*p;
-	int				d; //d, i
-	unsigned int	u;
+	// int				d;
+	// unsigned int	u;
 /*
 **	====== Bonus ======
 */
@@ -46,6 +46,13 @@ typedef	struct	s_printf
 	char			*e;
 }				t_printf;
 
+int				conv_c(t_printf *var, int *count);
+int				conv_s(t_printf *var, int *count);
+// void			conv_p(t_printf *var, int *count, size_t size);
+int				conv_di(t_printf *var, int *count);
+int				conv_u(t_printf *var, int *count);
+int				conv_lower_x(t_printf *var, int *count);
+int				conv_upper_x(t_printf *var, int *count);
 int				ft_printf(const char *str, ...);
 
 #endif

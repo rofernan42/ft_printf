@@ -6,80 +6,17 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/04 18:44:24 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:59:26 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-// int		conversion()
 
 void	init_var(t_printf *var)
 {
 	var->c = 0;
 	var->str = NULL;
 	var->p = 0;
-	var->d = 0;
-	var->u = 0;
-}
-
-void	conv_c(t_printf *var, int *count)
-{
-	var->c = va_arg(var->ap, unsigned int);
-	ft_putchar_fd(var->c, 1, count);
-}
-
-void	conv_s(t_printf *var, int *count)
-{
-	var->str = ft_strdup(va_arg(var->ap, char*));
-	ft_putstr_fd(var->str, 1, count);
-	free(var->str);
-	var->str = NULL;
-}
-
-// void	conv_p(t_printf *var, int *count)
-// {
-// 	char *tmp;
-
-// 	var->p = va_arg(var->ap, void*);
-// 	tmp = malloc(sizeof(var->p));
-// 	ft_memcpy(tmp, &var->p, sizeof(var->p));
-// 	ft_putstr_fd(tmp, 1, count);
-	
-// }
-
-void	conv_di(t_printf *var, int *count)
-{
-	var->str = ft_itoa(va_arg(var->ap, int));
-	ft_putstr_fd(var->str, 1, count);
-	free(var->str);
-	var->str = NULL;
-}
-
-void	conv_u(t_printf *var, int *count)
-{
-	var->str = ft_itoa_uns(va_arg(var->ap, unsigned int));
-	ft_putstr_fd(var->str, 1, count);
-	free(var->str);
-	var->str = NULL;
-}
-
-void	conv_x(t_printf *var, int *count)
-{
-	var->str = ft_convert_base(ft_itoa(va_arg(var->ap, int)), \
-										"0123456789", "0123456789abcdef");
-	ft_putstr_fd(var->str, 1, count);
-	free(var->str);
-	var->str = NULL;
-}
-
-void	conv_X(t_printf *var, int *count)
-{
-	var->str = ft_convert_base(ft_itoa(va_arg(var->ap, int)), \
-										"0123456789", "0123456789ABCDEF");
-	ft_putstr_fd(var->str, 1, count);
-	free(var->str);
-	var->str = NULL;
 }
 
 void	conversion(char c, t_printf *var, int *count)
@@ -88,24 +25,69 @@ void	conversion(char c, t_printf *var, int *count)
 		conv_c(var, count);
 	else if (c == 's')
 		conv_s(var, count);
-//	else if (c == 'p')
-//		conv_p(var, count);
+	// else if (c == 'p')
+	// 	conv_p(var, count, sizeof(var->p));
 	else if (c == 'd' || c == 'i')
 		conv_di(var, count);
 	else if (c == 'u')
 		conv_u(var, count);
 	else if (c == 'x')
-		conv_x(var, count);
+		conv_lower_x(var, count);
 	else if (c == 'X')
-		conv_X(var, count);
+		conv_upper_x(var, count);
 	else if (c == '%')
 		ft_putchar_fd('%', 1, count);
+}
+
+void	flag_dot(const char *str, t_printf *var, int *count)
+{
+	int	len_flag;
+	int	len_var;
+	int	i;
+
+	i = 0;
+	if (*str)
+	{
+		while (*str == '0')
+			str++;
+		if (*str >= '1' && *str <= '9')
+		{
+			len_flag = ft_atoi(&*str);
+			printf("%d\n", len_flag);
+			len_var = ft_strlen(var->str);
+			printf("%s\n", var->str);
+			printf("%zu\n", ft_strlen(var->str));
+			len_flag = len_flag - len_var;
+			printf("%d\n", len_flag);
+			while (i < len_flag)
+			{
+				ft_putchar_fd('0', 1, count);
+				i++;
+			}
+		}
+	}
+	else
+		return ;	
+}
+
+void	print_param(char c, t_printf *var, int *count)
+{
+	if (c == 'c')
+		ft_putchar_fd(var->c, 1, count);
+	else
+		ft_putstr_fd(var->str, 1, count);
+	free(var->str);
+	var->str = NULL;
 }
 
 int		ft_printf(const char *str, ...)
 {
 	int			i;
+	int			j;
+	int			k;
 	int			count;
+	int			nb_flags;
+	char		*flags;
 	t_printf	var;
 
 	i = 0;
@@ -116,17 +98,31 @@ int		ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			if (str[i] && (str[i] == '-' || str[i] == '0' || str[i] == '.'
-			|| str[i] == '*'))
+			j = i;
+			nb_flags = 0;
+			while (str[i] && (str[i] == '-' || str[i] == '.'
+			|| str[i] == '*' || (str[i] >= '0' && str[i] <= '9')))
 			{
 				i++;
+				nb_flags++;
 			}
-			if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p' || str[i] == 'd'
-			|| str[i] == 'i' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X'
-			|| str[i] == '%'))
+			if (nb_flags > 0)
+			{
+				flags = malloc(sizeof(char) * (nb_flags + 1));
+				k = 0;
+				while (str[j] && (str[j] == '-' || str[j] == '.'
+				|| str[j] == '*' || (str[j] >= '0' && str[j] <= '9')))
+					flags[k++] = str[j++];
+				flags[k] = '\0';
+			}
+			if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p'
+			|| str[i] == 'd' || str[i] == 'i' || str[i] == 'u'
+			|| str[i] == 'x' || str[i] == 'X' || str[i] == '%'))
 			{
 				init_var(&var);
 				conversion(str[i], &var, &count);
+				
+				print_param(str[i], &var, &count);
 				i++;
 			}
 		}
@@ -136,6 +132,7 @@ int		ft_printf(const char *str, ...)
 			i++;
 		}
 	}
+	va_end(var.ap);
 	printf("%d\n", count);
 	return (count);
 }

@@ -6,13 +6,13 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/04 18:40:10 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:22:03 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-
+// /*
 int main()
 {
 	unsigned int i = 2147483650;
@@ -20,41 +20,48 @@ int main()
 	ft_printf("salut : %c %c %c%c%c %s %d %i%d\n", 'a', 'T', 'p', 'Z', '1', "hahaha", 4567, 9874, 2);
 	// printf("%d %d %d %d %d\n", 2147483647, 2147483648, 0, -2147483647, -2147483650);
 	// ft_printf("%d %d %d %d %d\n", 2147483647, 2147483648, 0, -2147483647, -2147483650);
-	// printf("%p %p %p\n", "a", "21474", "coco");
-	// ft_printf("%p %p %p\n", "a", "21474", "coco");
+	printf("printf: %p %p %p\n", "a", "21474", "coco");
+	ft_printf("ft_printf: %p %p %p\n", "a", "21474", "coco");
 	printf("%d\n", printf("%s %d %u %u\n", "unsigned int", -1234, -1234, i));
-	ft_printf("%s %d %u %u\n", "unsigned int", -1234, -1234, i);
-	printf("%x %x %u\n", 456, i, -2147483648);
-	ft_printf("%x %x %u\n", 456, i, -2147483648);
-	printf("%X %X %u\n", 456, i, -2147483648);
-	ft_printf("%X %X %u\n", 456, i, -2147483648);
-	printf("%%%%%%%%%%%%\n");
-	ft_printf("%%%%%%%%%%%%\n");
+	ft_printf("ft_printf: %s %d %u %u\n", "unsigned int", -1234, -1234, i);
+	// printf("%x %x %u\n", 456, i, -2147483648);
+	// ft_printf("%x %x %u\n", 456, i, -2147483648);
+	// printf("%X %X %u\n", 456, i, -2147483648);
+	// ft_printf("%X %X %u\n", 456, i, -2147483648);
+	printf("printf: %%%%%%%%%%%%\n");
+	ft_printf("ft_printf: %%%%%%%%%%%%\n");
+
+	printf("printf: %.010d\n", 123);
+	ft_printf("ft_printf: %.010d\n", 123);
 	return (0);
 }
-
+// */
 /*
 int		main(void)
 {
 	char	*str;
 	str = "yoyo";
-	//printf("   printf = \"%x\"\n\n", -42);
-	//ft_printf("ft_printf = \"%x\"\n\n", -42);
-	// ft_printf("2:\n");
-	// ft_printf("ft_printf = \"%.10d\"\n", 4242);
-	// printf("   printf = \"%.10d\"\n\n", 4242);
-	// ft_printf("3:\n");
-	// ft_printf("ft_printf = \"%.10s\"\n", "yoyo");
-	// printf("   printf = \"%.10s\"\n\n", "yoyo");
-	// ft_printf("4:\n");
-	// ft_printf("ft_printf = \"%3.10d\"\n", 4242);
-	// printf("   printf = \"%3.10d\"\n\n", 4242);
-	//ft_printf("5:\n");
-	//ft_printf("ft_printf = \"%3.10s\"\n", "yoyo");
-	//printf("   printf = \"%3.10s\"\n\n", "yoyo");
-	//ft_printf("6:\n");
-	//ft_printf("ft_printf = \"%15.10d\"\n", 4242);
-	//printf("   printf = \"%15.10d\"\n\n", 4242);
+	printf("   printf = %15.d\n", 42);
+	printf("   printf = %.15d\n", 42);
+	printf("   printf = %15d\n\n", 42);
+
+	printf("   printf = \"%x\"\n\n", -42);
+	ft_printf("ft_printf = \"%x\"\n\n", -42);
+	ft_printf("2:\n");
+	ft_printf("ft_printf = \"%.10d\"\n", 4242);
+	printf("   printf = \"%.10d\"\n\n", 4242);
+	ft_printf("3:\n");
+	ft_printf("ft_printf = \"%.10s\"\n", "yoyo");
+	printf("   printf = \"%.10s\"\n\n", "yoyo");
+	ft_printf("4:\n");
+	ft_printf("ft_printf = \"%3.10d\"\n", 4242);
+	printf("   printf = \"%3.10d\"\n\n", 4242);
+	ft_printf("5:\n");
+	ft_printf("ft_printf = \"%3.10s\"\n", "yoyo");
+	printf("   printf = \"%.10s\"\n\n", "yoyo");
+	ft_printf("6:\n");
+	ft_printf("ft_printf = \"%15.10d\"\n", 4242);
+	printf("   printf = \"%15.10d\"\n\n", 4242);
 	//ft_printf("7:\n");
 	//ft_printf("ft_printf = \"%*.10s\"\n", -15, "yoyo");
 	//printf("   printf = \"%*.10s\"\n\n", -15, "yoyo");
