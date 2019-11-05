@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/05 14:59:26 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:36:03 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,74 @@ void	flag_dot(const char *str, t_printf *var, int *count)
 	i = 0;
 	if (*str)
 	{
-		while (*str == '0')
-			str++;
-		if (*str >= '1' && *str <= '9')
+		if (*str >= '0' && *str <= '9')
 		{
 			len_flag = ft_atoi(&*str);
-			printf("%d\n", len_flag);
 			len_var = ft_strlen(var->str);
-			printf("%s\n", var->str);
-			printf("%zu\n", ft_strlen(var->str));
-			len_flag = len_flag - len_var;
-			printf("%d\n", len_flag);
+			if ((len_flag = len_flag - len_var) <= 0)
+				return ;
 			while (i < len_flag)
 			{
 				ft_putchar_fd('0', 1, count);
 				i++;
 			}
 		}
+		else if (*str == '*')
+			return ;
 	}
 	else
-		return ;	
+		return ;
+}
+
+void	flag_nbr(const char *str, t_printf *var, int *count)
+{
+	int len_flag1;
+	int len_flag2;
+	int i;
+
+	i = 0;
+	len_flag1 = ft_atoi(&*str);
+	len_flag2 = 0;
+	while (*str)
+	{
+		if (*str == '.')
+		{
+			str++;
+			if (*str >= '0' && *str <= '9')
+			{
+				len_flag2 = ft_atoi(&*str);
+				break ;
+			}
+		}
+		str++;
+	}
+	if ((len_flag1 = len_flag1 - len_flag2) <= 0)
+		return ;
+	else
+	{
+		while (i < len_flag1)
+		{
+			ft_putchar_fd(' ', 1, count);
+			i++;
+		}
+	}
+}
+
+void	print_flags(char *flags, t_printf *var, int *count)
+{
+	int i;
+
+	i = 0;
+	// if (flags[i] == '-')
+	if (flags[i] >= '0' && flags[i] <= '9')
+		flag_nbr(&flags[i], var, count);
+	while (flags[i] >= '0' && flags[i] <= '9')
+		i++;
+	if (flags[i] == '.')
+		flag_dot(&flags[i + 1], var, count);
+	// else if (flags[i] == '*')
+	free(flags);
+	flags = NULL;
 }
 
 void	print_param(char c, t_printf *var, int *count)
@@ -100,6 +148,7 @@ int		ft_printf(const char *str, ...)
 			i++;
 			j = i;
 			nb_flags = 0;
+			flags = NULL;
 			while (str[i] && (str[i] == '-' || str[i] == '.'
 			|| str[i] == '*' || (str[i] >= '0' && str[i] <= '9')))
 			{
@@ -121,7 +170,8 @@ int		ft_printf(const char *str, ...)
 			{
 				init_var(&var);
 				conversion(str[i], &var, &count);
-				
+				if (flags)
+					print_flags(flags, &var, &count);
 				print_param(str[i], &var, &count);
 				i++;
 			}

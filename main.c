@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/05 14:22:03 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:24:13 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int main()
 	printf("printf: %%%%%%%%%%%%\n");
 	ft_printf("ft_printf: %%%%%%%%%%%%\n");
 
-	printf("printf: %.010d\n", 123);
-	ft_printf("ft_printf: %.010d\n", 123);
+	printf("printf: %.015d\n", i);
+	ft_printf("ft_printf: %.015d\n\n", i);
+	printf("printf: %.20d\n", 123);
+	ft_printf("ft_printf: %.20d\n\n", 123);
+	printf("printf: %15.10d\n", 456);
+	ft_printf("ft_printf: %15.10d\n\n", 456);
 	return (0);
 }
 // */
