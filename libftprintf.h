@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/05 14:09:34 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/07 17:18:32 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@
 # include <stdarg.h>
 # include "./Libft/libft.h"
 
+# define ABS(x)	(x < 0) ? -x : x
+
 typedef	struct	s_printf
 {
 	va_list			ap;
-	int				c;
-	char			*str; //*s, *x, *X
+	int				c; // char %c
+	char			*str; //chaine qui stocke les %d et %s %p etc
 	void			*p;
-	// int				d;
+	int				nbr; //nombre pour stocker int pour checker si le parametre est negatif pour bien placer les '-'
+	char			*stock_flags; // chaine qui stocke tous les flags apres le %
+	int				*flag_star; // pointeur sur int qui va stocker tous les parametres correspondant aux * apres le %
 	// unsigned int	u;
 /*
 **	====== Bonus ======
@@ -46,6 +50,21 @@ typedef	struct	s_printf
 	char			*e;
 }				t_printf;
 
+/*
+** check_elem.c
+*/
+int				check_c(char *str, char c);
+int				check_nb(char *str);
+
+/*
+** init_flags.c
+*/
+int		check_flags(const char *str, t_printf *var);
+void	assign_param_star(t_printf *var);
+
+/*
+** conv_*.c
+*/
 int				conv_c(t_printf *var, int *count);
 int				conv_s(t_printf *var, int *count);
 // void			conv_p(t_printf *var, int *count, size_t size);
@@ -53,6 +72,10 @@ int				conv_di(t_printf *var, int *count);
 int				conv_u(t_printf *var, int *count);
 int				conv_lower_x(t_printf *var, int *count);
 int				conv_upper_x(t_printf *var, int *count);
+
+/*
+** ft_printf.c
+*/
 int				ft_printf(const char *str, ...);
 
 #endif

@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_nbr.c                                         :+:      :+:    :+:   */
+/*   check_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 10:22:31 by rofernan         ###   ########.fr       */
+/*   Created: 2019/11/07 14:59:19 by rofernan          #+#    #+#             */
+/*   Updated: 2019/11/07 14:59:43 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	conv_di(t_printf *var, int *count)
+int		check_c(char *str, char c)
 {
-	int tmp;
-	var->nbr = va_arg(var->ap, int);
-	if (var->nbr < 0)
-		tmp = -var->nbr;
-	else
-		tmp = var->nbr;
-	var->str = ft_itoa_uns(tmp);
-	return (ft_strlen(var->str));
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int	conv_u(t_printf *var, int *count)
+int		check_nb(char *str)
 {
-	var->str = ft_itoa_uns(va_arg(var->ap, unsigned int));
-	return (ft_strlen(var->str));
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			return (1);
+		i++;
+	}
+	return (0);
 }
