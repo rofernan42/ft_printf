@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 11:05:31 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:53:07 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,28 @@ int				check_nb(char *str);
 int		count_elem(char *str, char c);
 
 /*
+** init_flags.c
+*/
+int		check_flags(const char *str, t_printf *var);
+void	assign_param_star(t_printf *var);
+
+/*
 ** print_types.c
 */
 void	print_zeros(t_printf *var, int *count, int len);
 void	print_spaces(t_printf *var, int *count, int len);
 void	print_minus(t_printf *var, int *count, int len);
+void	print_param(char c, t_printf *var, int *count);
 
 /*
-** init_flags.c
+** print_stars.c
 */
-int		check_flags(const char *str, t_printf *var);
-void	assign_param_star(t_printf *var);
+void	flag_just_star(t_printf *var, int *count);
+void	print_one_star(t_printf *var, int *count, int len_abs);
+void	print_two_stars(t_printf *var, int *count, int len_abs);
+
+
+
 
 /*
 ** conv_*.c

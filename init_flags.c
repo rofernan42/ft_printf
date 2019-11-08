@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:57:12 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 14:58:41 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:04:31 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,7 @@ void	assign_param_star(t_printf *var)
 	int nb;
 
 	i = 0;
-	nb = 0;
-	while (var->stock_flags[i])
-	{
-		if (var->stock_flags[i] == '*')
-			nb++;
-		i++;
-	}
+	nb = count_elem(var->stock_flags, '*');
 	var->flag_star = malloc(sizeof(int) * nb);
 	i = 0;
 	nb = 0;
