@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 19:00:47 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 20:56:01 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	flag_star_dot(t_printf *var, int *count)
 	{
 		if (var->nbr < 0)
 			ft_putchar_fd('-', 1, count);
-		print_zeros(var, count, var->flag_star[0] - ft_strlen(var->str));
+		print_zeros(var, count, var->flag_star[1] - ft_strlen(var->str));
 		ft_putstr_fd(var->str, 1, count);
 	}
 	else if (i > 0)
@@ -146,7 +146,33 @@ void	flag_star_dot(t_printf *var, int *count)
 	}
 }
 
-void	print_flags(t_printf *var, int *count)
+void	flag_dot_str(t_printf *var, int *count)
+{
+	int i;
+	int len_abs;
+
+	i = 0;
+	len_abs = ABS(var->flag_star[0]);
+	while (var->stock_flags[i] != '.')
+		i++;
+	if (i == 0)
+		ft_putstr_fd(var->str, 1, count);
+	else if (i > 0)
+	{
+		if (var->nb_param == 1)
+			print_spaces(var, count, len_abs);
+		else if (var->nb_param == 2)
+		{
+			if (var->flag_star[0] >= 0)
+				print_spaces(var, count, var->flag_star[0] - ft_strlen(var->str));
+			ft_putstr_fd(var->str, 1, count);
+			if (var->flag_star[0] < 0)
+				print_spaces(var, count, len_abs - ft_strlen(var->str));
+		}
+	}
+}
+
+void	print_flags(t_printf *var, int *count, int val)
 {
 	int i;
 
@@ -156,19 +182,13 @@ void	print_flags(t_printf *var, int *count)
 		flag_just_nb(var, count, ft_atoi(var->stock_flags));
 	if (check_c(var->stock_flags, '*') && !check_c(var->stock_flags, '.'))
 		flag_just_star(var, count);
-	// if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '*') \
-	// 	&& check_c(var->stock_flags, '.'))
-	// 	flag_nb_dot()
 	if (check_c(var->stock_flags, '.'))
-		flag_star_dot(var, count);
-
-	// if (flags[i] >= '0' && flags[i] <= '9')
-	// 	flag_nbr(&flags[i], var, count);
-	// while (flags[i] >= '0' && flags[i] <= '9')
-	// 	i++;
-	// if (flags[i] == '.')
-	// 	flag_dot(&flags[i + 1], var, count);
-	// else if (flags[i] == '*')
+	{
+		if (val == 1)
+			flag_star_dot(var, count);
+		if (val == 2)
+			flag_dot_str(var, count);
+	}
 }
 
 int		ft_printf(const char *str, ...)
@@ -191,24 +211,33 @@ int		ft_printf(const char *str, ...)
 			if (str[i])
 			{
 				i = check_flags(&str[i], &var) + i;
-				if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p'
-				|| str[i] == 'd' || str[i] == 'i' || str[i] == 'u'
-				|| str[i] == 'x' || str[i] == 'X' || str[i] == '%'))
+				if (var.stock_flags && !check_c(var.stock_flags, '.') && check_c(var.stock_flags, '*'))
+					var.flag_star[0] = va_arg(var.ap, int);
+				if (var.stock_flags && check_c(var.stock_flags, '.'))
+					assign_param_dot(&var);
+				conversion(str[i], &var, &count);
+				if (str[i] && (str[i] == 'd' || str[i] == 'i' || str[i] == 'u'
+						|| str[i] == 'x' || str[i] == 'X'))
 				{
-					if (var.stock_flags && !check_c(var.stock_flags, '.') && check_c(var.stock_flags, '*'))
-						var.flag_star[0] = va_arg(var.ap, int);
-					if (var.stock_flags && check_c(var.stock_flags, '.'))
-						assign_param_dot(&var);
-					conversion(str[i], &var, &count);
 					if (!var.stock_flags)
 						print_param(str[i], &var, &count);
 					else if (var.stock_flags)// && var.stock_flags[0] != '-')
-						print_flags(&var, &count);
+						print_flags(&var, &count, 1);
 					// else if (var.stock_flags && var.stock_flags[0] == '-')
 						// print_flags(&var, &count);
-					free_var(&var);
-					i++;
 				}
+				else if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p'
+						|| str[i] == '%'))
+				{
+					if (!var.stock_flags)
+						print_param(str[i], &var, &count);
+					else if (var.stock_flags)// && var.stock_flags[0] != '-')
+						print_flags(&var, &count, 2);
+					// else if (var.stock_flags && var.stock_flags[0] == '-')
+						// print_flags(&var, &count);
+				}
+				free_var(&var);
+				i++;
 			}
 		}
 		if (str[i] && str[i] != '%')

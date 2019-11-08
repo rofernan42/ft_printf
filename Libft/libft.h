@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:25:58 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 15:24:02 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 20:30:34 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void			ft_putstr_fd(char *s, int fd, int *count);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd, int *count);
 
+char			*ft_strndup(const char *src, size_t n);
 char			*ft_itoa_uns(unsigned int n);
 char			*ft_itoa_uintptr(uintptr_t n);
 unsigned int	ft_atoi_base(char *str, char *base);

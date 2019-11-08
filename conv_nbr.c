@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 17:14:09 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 20:48:43 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	conv_di(t_printf *var, int *count)
 		tmp = -var->nbr;
 	else
 		tmp = var->nbr;
-	var->str = ft_itoa_uns(tmp);
+	if (var->nbr == 0 && var->nb_param > 0 && var->flag_star[1] == 0)
+		var->str = ft_strdup("");
+	else
+		var->str = ft_itoa_uns(tmp);
 	return (ft_strlen(var->str));
 }
 

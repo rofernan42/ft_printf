@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:57:12 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 18:44:24 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 20:00:56 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	assign_param_dot(t_printf *var)
 	if (i == 0)
 	{
 		if (check_nb(&var->stock_flags[1]) && !check_c(&var->stock_flags[1], '*'))
-			var->flag_star[0] = ft_atoi(&var->stock_flags[1]);
+			var->flag_star[1] = ft_atoi(&var->stock_flags[1]);
 		else if (check_c(&var->stock_flags[1], '*'))
-			var->flag_star[0] = va_arg(var->ap, int);
+			var->flag_star[1] = va_arg(var->ap, int);
 		var->nb_param = 1;
 	}
 	if (i > 0)
