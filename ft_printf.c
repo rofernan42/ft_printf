@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 18:13:11 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:17:48 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,137 +42,58 @@ void	conversion(char c, t_printf *var, int *count)
 		ft_putchar_fd('%', 1, count);
 }
 
-void	flag_dot(const char *str, t_printf *var, int *count)
-{
-	int	len_flag;
-	int	len_var;
-	int	i;
-
-	i = 0;
-	if (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-		{
-			len_flag = ft_atoi(&*str);
-			len_var = ft_strlen(var->str);
-			if ((len_flag = len_flag - len_var) <= 0)
-				return ;
-			while (i < len_flag)
-			{
-				ft_putchar_fd('0', 1, count);
-				i++;
-			}
-		}
-		else if (*str == '*')
-			return ;
-	}
-	else
-		return ;
-}
-
-void	flag_nbr(const char *str, t_printf *var, int *count)
-{
-	int len_flag1;
-	int len_flag2;
-	int i;
-
-	i = 0;
-	len_flag1 = ft_atoi(&*str);
-	len_flag2 = 0;
-	while (*str)
-	{
-		if (*str == '.')
-		{
-			str++;
-			if (*str >= '0' && *str <= '9')
-			{
-				len_flag2 = ft_atoi(&*str);
-				break ;
-			}
-		}
-		str++;
-	}
-	if ((len_flag1 = len_flag1 - len_flag2) <= 0)
-		return ;
-	else
-	{
-		while (i < len_flag1)
-		{
-			ft_putchar_fd(' ', 1, count);
-			i++;
-		}
-	}
-}
-
-void	flag_just_nb(t_printf *var, int *count)
+void	flag_just_nb(t_printf *var, int *count, int len_param)
 {
 	int i;
 	int len;
 
 	i = 0;
-	if ((len = ft_atoi(var->stock_flags) - ft_strlen(var->str) + 1) <= 0)
+	if ((len = len_param - ft_strlen(var->str) + 1) <= 0)
 		len = 0;
 	if (var->nbr < 0)
 		len--;
 	while (var->stock_flags[i] == '0')
 		i++;
 	if (i > 0)
-	{
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
-		while (--len > 0)
-			ft_putchar_fd('0', 1, count);
-	}
+		print_zeros(var, count, len);
 	else
-	{
-		while (--len > 0)
-			ft_putchar_fd(' ', 1, count);
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
-	}
-	ft_putstr_fd(var->str, 1, count);
+		print_spaces(var, count, len);
 }
 
 void	flag_just_star(t_printf *var, int *count)
 {
-	int i;
 	int len;
-	int param;
+	int len_abs;
 
-	i = 0;
-	param = ABS(var->flag_star[0]);
-	if ((len = param - ft_strlen(var->str) + 1) <= 0)
+	len_abs = ABS(var->flag_star[0]);
+	if ((len = len_abs - ft_strlen(var->str) + 1) <= 0)
 		len = 0;
 	if (var->nbr < 0)
 		len--;
-	while (var->stock_flags[i] == '0')
-		i++;
 	if (var->flag_star[0] >=0)
 	{
-		if (i > 0)
-		{
-			if (var->nbr < 0)
-				ft_putchar_fd('-', 1, count);
-			while (--len > 0)
-				ft_putchar_fd('0', 1, count);
-		}
+		if (count_elem(var->stock_flags, '0') > 0)
+			print_zeros(var, count, len);
 		else
-		{
-			while (--len > 0)
-				ft_putchar_fd(' ', 1, count);
-			if (var->nbr < 0)
-				ft_putchar_fd('-', 1, count);
-		}
-		ft_putstr_fd(var->str, 1, count);
+			print_spaces(var, count, len);
 	}
 	else if (var->flag_star[0] < 0)
-	{
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
-		ft_putstr_fd(var->str, 1, count);
-		while (--len > 0)
-			ft_putchar_fd(' ', 1, count);
-	}
+		print_minus(var, count, len);
+}
+
+void	flag_star_dot(t_printf *var, int *count)
+{
+	int i;
+	int len_abs;
+
+	i = 0;
+	len_abs = ABS(var->flag_star[0]);
+	while (var->stock_flags[i] != '.')
+		i++;
+	if (i == 0)
+		print_zeros(var, count, var->flag_star[0] - ft_strlen(var->str) + 1);
+	else if (i > 0)
+		print_minus(var, count, len_abs - ft_strlen(var->str) + 1);
 }
 
 void	print_flags(t_printf *var, int *count)
@@ -180,13 +101,17 @@ void	print_flags(t_printf *var, int *count)
 	int i;
 
 	i = 0;
-	// if (flags[i] == '-')
-	if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '-') \
-		&& !check_c(var->stock_flags, '*') && !check_c(var->stock_flags, '.'))
-		flag_just_nb(var, count);
-	if (!check_c(var->stock_flags, '-') && check_c(var->stock_flags, '*') \
+	if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '*') \
 		&& !check_c(var->stock_flags, '.'))
+		flag_just_nb(var, count, ft_atoi(var->stock_flags));
+	if (check_c(var->stock_flags, '*') && !check_c(var->stock_flags, '.'))
 		flag_just_star(var, count);
+	// if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '*') \
+	// 	&& check_c(var->stock_flags, '.'))
+	// 	flag_nb_dot()
+	if (check_c(var->stock_flags, '*') && check_c(var->stock_flags, '.') \
+		&& count_elem(var->stock_flags, '*') == 1)
+		flag_star_dot(var, count);
 
 	// if (flags[i] >= '0' && flags[i] <= '9')
 	// 	flag_nbr(&flags[i], var, count);
@@ -243,6 +168,12 @@ int		ft_printf(const char *str, ...)
 					else if (var.stock_flags && var.stock_flags[0] != '-')
 					{
 						print_flags(&var, &count);
+						free(var.stock_flags);
+						var.stock_flags = NULL;
+					}
+					else if (var.stock_flags && var.stock_flags[0] == '-')
+					{
+						// print_flags(&var, &count);
 						free(var.stock_flags);
 						var.stock_flags = NULL;
 					}

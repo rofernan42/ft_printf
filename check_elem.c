@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:59:19 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 14:59:43 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 10:27:26 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,20 @@ int		check_nb(char *str)
 		i++;
 	}
 	return (0);
+}
+
+int		count_elem(char *str, char c)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }

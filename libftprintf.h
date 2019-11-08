@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 17:18:32 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:05:31 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ typedef	struct	s_printf
 */
 int				check_c(char *str, char c);
 int				check_nb(char *str);
+int		count_elem(char *str, char c);
+
+/*
+** print_types.c
+*/
+void	print_zeros(t_printf *var, int *count, int len);
+void	print_spaces(t_printf *var, int *count, int len);
+void	print_minus(t_printf *var, int *count, int len);
 
 /*
 ** init_flags.c
