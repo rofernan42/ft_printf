@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 13:19:21 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 17:11:08 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	conversion(char c, t_printf *var, int *count)
 		conv_c(var, count);
 	else if (c == 's')
 		conv_s(var, count);
-	// else if (c == 'p')
-	// 	conv_p(var, count, sizeof(var->p));
+	else if (c == 'p')
+		conv_p(var, count);
 	else if (c == 'd' || c == 'i')
 		conv_di(var, count);
 	else if (c == 'u')
@@ -64,9 +64,17 @@ void	flag_just_nb(t_printf *var, int *count, int len_param)
 	while (var->stock_flags[i] == '0')
 		i++;
 	if (i > 0)
+	{
+		if (var->nbr < 0)
+			ft_putchar_fd('-', 1, count);
 		print_zeros(var, count, len);
+	}
 	else
+	{
 		print_spaces(var, count, len);
+		if (var->nbr < 0)
+			ft_putchar_fd('-', 1, count);
+	}
 	ft_putstr_fd(var->str, 1, count);
 }
 
@@ -81,6 +89,8 @@ void	flag_star_dot(t_printf *var, int *count)
 		i++;
 	if (i == 0)
 	{
+		if (var->nbr < 0)
+			ft_putchar_fd('-', 1, count);
 		print_zeros(var, count, var->flag_star[0] - ft_strlen(var->str));
 		ft_putstr_fd(var->str, 1, count);
 	}
@@ -89,7 +99,14 @@ void	flag_star_dot(t_printf *var, int *count)
 		if (count_elem(var->stock_flags, '*') == 1)
 			print_one_star(var, count, len_abs);
 		else if (count_elem(var->stock_flags, '*') == 2)
+		{
+			if (var->nbr < 0)
+			{
+				var->flag_star[0]--;
+				len_abs--;
+			}
 			print_two_stars(var, count, len_abs);
+		}
 	}
 }
 

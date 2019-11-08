@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:25:58 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/07 10:19:04 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 15:24:02 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 
 void			*ft_memset(void *str, int c, size_t len);
 void			ft_bzero(void *str, size_t n);
@@ -54,23 +55,10 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd, int *count);
 
 char			*ft_itoa_uns(unsigned int n);
+char			*ft_itoa_uintptr(uintptr_t n);
 unsigned int	ft_atoi_base(char *str, char *base);
+uintptr_t		ft_atoi_base_uintptr(char *str, char *base);
 char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
-
-typedef	struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstnew(void *content);
-void			ft_lstadd_front(t_list **alst, t_list *new);
-int				ft_lstsize(t_list *lst);
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstadd_back(t_list **alst, t_list *new);
-void			ft_lstdelone(t_list *lst, void (*del)(void *));
-void			ft_lstclear(t_list **lst, void (*del)(void *));
-void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *));
+char			*ft_convert_base_uintptr(char *nbr, char *base_from, char *base_to);
 
 #endif

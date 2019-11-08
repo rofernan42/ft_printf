@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 12:53:07 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 15:25:54 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef	struct	s_printf
 */
 int				check_c(char *str, char c);
 int				check_nb(char *str);
-int		count_elem(char *str, char c);
+int				count_elem(char *str, char c);
 
 /*
 ** init_flags.c
@@ -86,7 +86,7 @@ void	print_two_stars(t_printf *var, int *count, int len_abs);
 */
 int				conv_c(t_printf *var, int *count);
 int				conv_s(t_printf *var, int *count);
-// void			conv_p(t_printf *var, int *count, size_t size);
+int				conv_p(t_printf *var, int *count);
 int				conv_di(t_printf *var, int *count);
 int				conv_u(t_printf *var, int *count);
 int				conv_lower_x(t_printf *var, int *count);
