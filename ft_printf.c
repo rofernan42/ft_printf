@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 17:11:08 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 19:00:47 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,20 @@ void	init_var(t_printf *var)
 	var->p = 0;
 	var->nbr = 0;
 	var->stock_flags = NULL;
-	var->flag_star = 0;
+	var->flag_star[0] = 0;
+	var->flag_star[1] = 0;
+	var->nb_param = 0;
 }
 
 void	free_var(t_printf *var)
 {
 	free(var->str);
 	var->str = NULL;
-	free(var->stock_flags);
-	var->stock_flags = NULL;
-	free(var->flag_star);
+	if (var->stock_flags)
+	{
+		free(var->stock_flags);
+		var->stock_flags = NULL;
+	}
 }
 
 void	conversion(char c, t_printf *var, int *count)
@@ -48,7 +52,7 @@ void	conversion(char c, t_printf *var, int *count)
 	else if (c == 'X')
 		conv_upper_x(var, count);
 	else if (c == '%')
-		ft_putchar_fd('%', 1, count);
+		conv_pcent(var, count);
 }
 
 void	flag_just_nb(t_printf *var, int *count, int len_param)
@@ -78,6 +82,38 @@ void	flag_just_nb(t_printf *var, int *count, int len_param)
 	ft_putstr_fd(var->str, 1, count);
 }
 
+// void	flag_star_dot(t_printf *var, int *count)
+// {
+// 	int i;
+// 	int len_abs;
+
+// 	i = 0;
+// 	len_abs = ABS(var->flag_star[0]);
+// 	while (var->stock_flags[i] != '.')
+// 		i++;
+// 	if (i == 0)
+// 	{
+// 		if (var->nbr < 0)
+// 			ft_putchar_fd('-', 1, count);
+// 		print_zeros(var, count, var->flag_star[0] - ft_strlen(var->str));
+// 		ft_putstr_fd(var->str, 1, count);
+// 	}
+// 	else if (i > 0)
+// 	{
+// 		if (count_elem(var->stock_flags, '*') == 1)
+// 			print_one_star(var, count, len_abs);
+// 		else if (count_elem(var->stock_flags, '*') == 2)
+// 		{
+// 			if (var->nbr < 0)
+// 			{
+// 				var->flag_star[0]--;
+// 				len_abs--;
+// 			}
+// 			print_two_stars(var, count, len_abs);
+// 		}
+// 	}
+// }
+
 void	flag_star_dot(t_printf *var, int *count)
 {
 	int i;
@@ -96,9 +132,9 @@ void	flag_star_dot(t_printf *var, int *count)
 	}
 	else if (i > 0)
 	{
-		if (count_elem(var->stock_flags, '*') == 1)
+		if (var->nb_param == 1)
 			print_one_star(var, count, len_abs);
-		else if (count_elem(var->stock_flags, '*') == 2)
+		else if (var->nb_param == 2)
 		{
 			if (var->nbr < 0)
 			{
@@ -109,11 +145,6 @@ void	flag_star_dot(t_printf *var, int *count)
 		}
 	}
 }
-
-// void	flag_nb_dot(t_printf *var, int *count)
-// {
-
-// }
 
 void	print_flags(t_printf *var, int *count)
 {
@@ -128,7 +159,7 @@ void	print_flags(t_printf *var, int *count)
 	// if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '*') \
 	// 	&& check_c(var->stock_flags, '.'))
 	// 	flag_nb_dot()
-	if (check_c(var->stock_flags, '*') && check_c(var->stock_flags, '.'))
+	if (check_c(var->stock_flags, '.'))
 		flag_star_dot(var, count);
 
 	// if (flags[i] >= '0' && flags[i] <= '9')
@@ -164,12 +195,14 @@ int		ft_printf(const char *str, ...)
 				|| str[i] == 'd' || str[i] == 'i' || str[i] == 'u'
 				|| str[i] == 'x' || str[i] == 'X' || str[i] == '%'))
 				{
-					if (var.stock_flags && check_c(var.stock_flags, '*'))
-						assign_param_star(&var);
+					if (var.stock_flags && !check_c(var.stock_flags, '.') && check_c(var.stock_flags, '*'))
+						var.flag_star[0] = va_arg(var.ap, int);
+					if (var.stock_flags && check_c(var.stock_flags, '.'))
+						assign_param_dot(&var);
 					conversion(str[i], &var, &count);
 					if (!var.stock_flags)
 						print_param(str[i], &var, &count);
-					else if (var.stock_flags && var.stock_flags[0] != '-')
+					else if (var.stock_flags)// && var.stock_flags[0] != '-')
 						print_flags(&var, &count);
 					// else if (var.stock_flags && var.stock_flags[0] == '-')
 						// print_flags(&var, &count);

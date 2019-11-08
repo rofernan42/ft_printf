@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 15:25:54 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/08 19:00:27 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef	struct	s_printf
 	void			*p;
 	int				nbr; //nombre pour stocker int pour checker si le parametre est negatif pour bien placer les '-'
 	char			*stock_flags; // chaine qui stocke tous les flags apres le %
-	int				*flag_star; // pointeur sur int qui va stocker tous les parametres correspondant aux * apres le %
+	int				flag_star[2]; // pointeur sur int qui va stocker tous les parametres correspondant aux * apres le %
+	int				nb_param;	//nombre de parametres autour du '.' (1 ou 2)
 	// unsigned int	u;
 /*
 **	====== Bonus ======
@@ -70,6 +71,7 @@ void	print_zeros(t_printf *var, int *count, int len);
 void	print_spaces(t_printf *var, int *count, int len);
 void	print_minus(t_printf *var, int *count, int len);
 void	print_param(char c, t_printf *var, int *count);
+void	assign_param_dot(t_printf *var);
 
 /*
 ** print_stars.c
@@ -91,6 +93,7 @@ int				conv_di(t_printf *var, int *count);
 int				conv_u(t_printf *var, int *count);
 int				conv_lower_x(t_printf *var, int *count);
 int				conv_upper_x(t_printf *var, int *count);
+int				conv_pcent(t_printf *var, int *count);
 
 /*
 ** ft_printf.c
