@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 20:54:51 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 16:13:30 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	conv_c(t_printf *var, int *count)
 {
+	var->c = va_arg(var->ap, unsigned int);
 	var->str = ft_strdup(" ");
-	var->str[0] = va_arg(var->ap, unsigned int);
+	var->str[0] = var->c;
 	return (1);
 }
 

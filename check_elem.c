@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:59:19 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 10:27:57 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 16:37:30 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,12 @@ int		check_n_nb(char *str, int n)
 	return (0);
 }
 
-int		count_elem(char *str, char c)
+int		find_c(char *str, char c)
 {
 	int i;
-	int count;
 
 	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			count++;
+	while (str[i] && str[i] != c)
 		i++;
-	}
-	return (count);
+	return (i);
 }
