@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 20:43:52 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 12:08:27 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,35 +128,35 @@ int main()
 
 	// ===== ETOILES + POINT =====
 	// POSITIF
-	printf("+ *.\n");
-	printf("1  printf: |%*.d| |%*.d| |%*.d| |%*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);			//
-	ft_printf("ft_printf: |%*.d| |%*.d| |%*.d| |%*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);		//
-	printf("2  printf: |%*.d| |%*.d| |%*.d| |%*.d|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);		//
-	ft_printf("ft_printf: |%*.d| |%*.d| |%*.d| |%*.d|\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);//
-																									// MEME RESULTATS
-	printf("+ 0*.\n");																				//
-	printf("3  printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);		//
-	ft_printf("ft_printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);	//
-	printf("4  printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);		//
-	ft_printf("ft_printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);//
+	// printf("+ *.\n");
+	// printf("1  printf: |%*.x| |%*.x| |%*.x| |%*.x|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);			//
+	// ft_printf("ft_printf: |%*.x| |%*.x| |%*.x| |%*.x|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);		//
+	// printf("2  printf: |%*.x| |%*.x| |%*.x| |%*.x|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);		//
+	// ft_printf("ft_printf: |%*.x| |%*.x| |%*.x| |%*.x|\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);//
+	// 																								// MEME RESULTATS
+	// printf("+ 0*.\n");																				//
+	// printf("3  printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);		//
+	// ft_printf("ft_printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);	//
+	// printf("4  printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);		//
+	// ft_printf("ft_printf: |%0*.d| |%0*.d| |%0*.d| |%0*.d|\n\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);//
 
-	printf("+ .*\n");
-	printf("1  printf: |%.*s| |%.*s| |%.*s|\n", 15,"romain", 4,"romain", 7,"romain");			//
-	ft_printf("ft_printf: |%.*s| |%.*s| |%.*s|\n", 15,"romain", 4,"romain", 7,"romain");		//
-	printf("2  printf: |%.*s| |%.*s| |%.*s|\n", -15,"romain", -4,"romain", -7,"romain");		//
-	ft_printf("ft_printf: |%.*s| |%.*s| |%.*s|\n\n", -15,"romain", -4,"romain", -7,"romain");//
+	// printf("+ .*\n");
+	// printf("1  printf: |%.*s| |%.*s| |%.*s|\n", 15,"romain", 4,"romain", 7,"romain");			//
+	// ft_printf("ft_printf: |%.*s| |%.*s| |%.*s|\n", 15,"romain", 4,"romain", 7,"romain");		//
+	// printf("2  printf: |%.*s| |%.*s| |%.*s|\n", -15,"romain", -4,"romain", -7,"romain");		//
+	// ft_printf("ft_printf: |%.*s| |%.*s| |%.*s|\n\n", -15,"romain", -4,"romain", -7,"romain");//
 	
-	printf("+ *.\n");
-	printf("1  printf: |%*.s| |%*.s| |%*.s|\n", 15,"romain", 4,"romain", 7,"romain");			//
-	ft_printf("ft_printf: |%*.s| |%*.s| |%*.s|\n", 15,"romain", 4,"romain", 7,"romain");		//
-	printf("2  printf: |%*.s| |%*.s| |%*.s|\n", -15,"romain", -4,"romain", -7,"romain");		//
-	ft_printf("ft_printf: |%*.s| |%*.s| |%*.s|\n\n", -15,"romain", -4,"romain", -7,"romain");//
+	// printf("+ *.\n");
+	// printf("1  printf: |%*.s| |%*.s| |%*.s|\n", 15,"romain", 4,"romain", 7,"romain");			//
+	// ft_printf("ft_printf: |%*.s| |%*.s| |%*.s|\n", 15,"romain", 4,"romain", 7,"romain");		//
+	// printf("2  printf: |%*.s| |%*.s| |%*.s|\n", -15,"romain", -4,"romain", -7,"romain");		//
+	// ft_printf("ft_printf: |%*.s| |%*.s| |%*.s|\n\n", -15,"romain", -4,"romain", -7,"romain");//
 
-	printf("+ .*\n");
-	printf("1  printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);
-	ft_printf("ft_printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);
-	printf("2  printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);
-	ft_printf("ft_printf: |%.*d| |%.*d| |%.*d| |%.*d|\n\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);
+	// printf("+ .*\n");
+	// printf("1  printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);
+	// ft_printf("ft_printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", 15,1234, 15,-1234, 5,1234, 5,-1234);
+	// printf("2  printf: |%.*d| |%.*d| |%.*d| |%.*d|\n", -15,1234, -15,-1234, -5,1234, -5,-1234);
+	// ft_printf("ft_printf: |%.*d| |%.*d| |%.*d| |%.*d|\n\n\n", -15,1234, -15,-1234, -5,1234, -5,-1234);
 
 	// printf("+ .0*\n");								//
 	// printf("3  printf: |%.10*d|\n", 15,1234);		//
@@ -174,15 +174,15 @@ int main()
 	printf("4  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", -15,-10,1234, -10,-15,1234, -0,-0,1234, -15,-3,1234);		// 1234, 6 + 5 spaces
 	ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n\n", -15,-10,1234, -10,-15,1234, -0,-0,1234, -15,-3,1234);
 
-	printf("+ *.* string\n");
-	printf("1  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,10,"romain", 10,15,"romain", 0,0,"romain", 15,3,"romain"); //en cas de chaine de caractere, argument a gauche
-	ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,10,"romain", 10,15,"romain", 0,0,"romain", 15,3,"romain");// correspond au nombre d'espaces avant et argument
-	printf("2  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,10,"romain", -10,15,"romain", -0,0,"romain", -15,3,"romain"); // a droite correspond au nombre maximal de caracteres
-	ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,10,"romain", -10,15,"romain", -0,0,"romain", -15,3,"romain"); // a afficher
-	printf("3  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,-10,"romain", 10,-15,"romain", 0,-0,"romain", 15,-3,"romain");
-	ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,-10,"romain", 10,-15,"romain", 0,-0,"romain", 15,-3,"romain");
-	printf("4  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,-10,"romain", -10,-15,"romain", -0,-0,"romain", -15,-3,"romain");
-	ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n\n", -15,-10,"romain", -10,-15,"romain", -0,-0,"romain", -15,-3,"romain");
+	printf("- *.* pos parameter\n");
+	printf("1  printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", 15,10,1234, 10,15,1234, 0,0,1234, 15,3,1234);
+	ft_printf("ft_printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", 15,10,1234, 10,15,1234, 0,0,1234, 15,3,1234);
+	printf("2  printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", -15,10,1234, -10,15,1234, -0,0,1234, -15,3,1234);
+	ft_printf("ft_printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", -15,10,1234, -10,15,1234, -0,0,1234, -15,3,1234);
+	printf("3  printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", 15,-10,1234, 10,-15,1234, 0,-0,1234, 15,-3,1234);
+	ft_printf("ft_printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", 15,-10,1234, 10,-15,1234, 0,-0,1234, 15,-3,1234);
+	printf("4  printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n", -15,-10,1234, -10,-15,1234, -0,-0,1234, -15,-3,1234);
+	ft_printf("ft_printf: |%-*.*x| |%-*.*x| |%-*.*x| |%-*.*x|\n\n", -15,-10,1234, -10,-15,1234, -0,-0,1234, -15,-3,1234);
 
 	printf("+ *.* neg parameter\n");
 	printf("1  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", 15,10,-1234, 10,15,-1234, 0,0,-1234, 15,3,-1234);			// 5 spaces, 6 0, 1234
@@ -194,32 +194,121 @@ int main()
 	printf("4  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);		// 1234, 6 + 5 spaces
 	ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n\n\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);
 
+	printf("- *.* neg parameter\n");
+	printf("1  printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", 15,10,-1234, 10,15,-1234, 0,0,-1234, 15,3,-1234);			// 5 spaces, 6 0, 1234
+	ft_printf("ft_printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", 15,10,-1234, 10,15,-1234, 0,0,-1234, 15,3,-1234);  		// <---je fais flag_star[0] - flag_star[1] c'est pas bon
+	printf("2  printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", -15,10,-1234, -10,15,-1234, -0,0,-1234, -15,3,-1234);		// 6 0, 1234, 5 spaces
+	ft_printf("ft_printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", -15,10,-1234, -10,15,-1234, -0,0,-1234, -15,3,-1234);
+	printf("3  printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", 15,-10,-1234, 10,-15,-1234, 0,-0,-1234, 15,-3,-1234);		// 6 + 5 spaces, 1234
+	ft_printf("ft_printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", 15,-10,-1234, 10,-15,-1234, 0,-0,-1234, 15,-3,-1234);
+	printf("4  printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);		// 1234, 6 + 5 spaces
+	ft_printf("ft_printf: |%-*.*d| |%-*.*d| |%-*.*d| |%-*.*d|\n\n\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);
 
+	// printf("+ *.* string\n");
+	// printf("1  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,10,"romain", 10,15,"romain", 0,0,"romain", 15,3,"romain"); //en cas de chaine de caractere, argument a gauche
+	// ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,10,"romain", 10,15,"romain", 0,0,"romain", 15,3,"romain");// correspond au nombre d'espaces avant et argument
+	// printf("2  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,10,"romain", -10,15,"romain", -0,0,"romain", -15,3,"romain"); // a droite correspond au nombre maximal de caracteres
+	// ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,10,"romain", -10,15,"romain", -0,0,"romain", -15,3,"romain"); // a afficher
+	// printf("3  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,-10,"romain", 10,-15,"romain", 0,-0,"romain", 15,-3,"romain");
+	// ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", 15,-10,"romain", 10,-15,"romain", 0,-0,"romain", 15,-3,"romain");
+	// printf("4  printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n", -15,-10,"romain", -10,-15,"romain", -0,-0,"romain", -15,-3,"romain");
+	// ft_printf("ft_printf: |%*.*s| |%*.*s| |%*.*s| |%*.*s|\n\n", -15,-10,"romain", -10,-15,"romain", -0,-0,"romain", -15,-3,"romain");
 
-	// ===== NOMBRES + POINT =====
-	printf("+ nbr.nbr pos parameter\n");
-	printf("1  printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", 1234, 1234, 1234, 1234);			// 5 spaces, 6 0, 1234
-	ft_printf("ft_printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", 1234, 1234, 1234, 1234);  		//
-	// printf("2  printf: |%-015.10d| |%-010.15d| |%0.0d| |%-015.3d|\n", 1234, 1234, 1234, 1234);		// 6 0, 1234, 5 spaces
-	// ft_printf("ft_printf: |%-015.10d| |%-010.15d| |%0.0d| |%-015.3d|\n", 1234, 1234, 1234, 1234);
-	// printf("3  printf: |%15.-10d| |%10.-15d| |%0.-0d| |%15.-3d|\n", 1234, 1234, 1234, 1234);		// 6 + 5 spaces, 1234
-	// ft_printf("ft_printf: |%15.-10d| |%10.-15d| |%0.-0d| |%15.-3d|\n", 1234, 1234, 1234, 1234);
-	// printf("4  printf: |%-15.-10d| |%-10.-15d| |%-0.-0d| |%-15.-3d|\n", 1234, 1234, 1234, 1234);		// 1234, 6 + 5 spaces
-	// ft_printf("ft_printf: |%-15.-10d| |%-10.-15d| |%-0.-0d| |%-15.-3d|\n", 1234, 1234, 1234, 1234);
-
-	printf("+ nbr.nbr neg parameter\n");
-	printf("1  printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", -1234, -1234, -1234, -1234);			// 5 spaces, 6 0, 1234
-	ft_printf("ft_printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", -1234, -1234, -1234, -1234);  		// <---je fais flag_star[0] - flag_star[1] c'est pas bon
+	// printf("+ *.* neg parameter\n");
+	// printf("1  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", 15,10,-1234, 10,15,-1234, 0,0,-1234, 15,3,-1234);			// 5 spaces, 6 0, 1234
+	// ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", 15,10,-1234, 10,15,-1234, 0,0,-1234, 15,3,-1234);  		// <---je fais flag_star[0] - flag_star[1] c'est pas bon
 	// printf("2  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", -15,10,-1234, -10,15,-1234, -0,0,-1234, -15,3,-1234);		// 6 0, 1234, 5 spaces
 	// ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", -15,10,-1234, -10,15,-1234, -0,0,-1234, -15,3,-1234);
 	// printf("3  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", 15,-10,-1234, 10,-15,-1234, 0,-0,-1234, 15,-3,-1234);		// 6 + 5 spaces, 1234
 	// ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", 15,-10,-1234, 10,-15,-1234, 0,-0,-1234, 15,-3,-1234);
 	// printf("4  printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);		// 1234, 6 + 5 spaces
-	// ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);
+	// ft_printf("ft_printf: |%*.*d| |%*.*d| |%*.*d| |%*.*d|\n\n\n", -15,-10,-1234, -10,-15,-1234, -0,-0,-1234, -15,-3,-1234);
 
-	printf("1  printf: |%d| |%.d| |%10.d| |%.10d| |%10.10d| |%.s|\n", 0, 0, 0, 0, 0, "romain");			// 5 spaces, 6 0, 1234
-	ft_printf("ft_printf: |%d| |%.d| |%10.d| |%.10d| |%10.10d| |%.s|\n", 0, 0, 0, 0, 0, "romain"); 
 
+
+	// ===== NOMBRES + POINT =====
+	// printf("+ nbr.nbr pos parameter %%d\n");
+	// printf("1  printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", 1234, 1234, 1234, 1234);
+	// ft_printf("ft_printf: |%15.10d| |%10.15d| |%0.0d| |%15.3d|\n", 1234, 1234, 1234, 1234);
+	// printf("+ 0nbr.nbr pos parameter %%d\n");
+	// printf("2  printf: |%015.10d| |%010.15d| |%0.0d| |%015.3d|\n", 1234, 1234, 1234, 1234);
+	// ft_printf("ft_printf: |%015.10d| |%010.15d| |%0.0d| |%015.3d|\n\n", 1234, 1234, 1234, 1234);
+	// printf("2  printf: |%-015.10d| |%-010.15d| |%0.0d| |%-015.3d|\n", 1234, 1234, 1234, 1234);  //CA MARCHE MAIS JE NAI PAS GERE LES '-' ENCORE
+	// ft_printf("ft_printf: |%-015.10d| |%-010.15d| |%0.0d| |%-015.3d|\n\n\n", 1234, 1234, 1234, 1234);
+	// printf("3  printf: |%15.-10d| |%10.-15d| |%0.-0d| |%15.-3d|\n", 1234, 1234, 1234, 1234);    //UNDEFINED BEHAVIOUR
+	// ft_printf("ft_printf: |%15.-10d| |%10.-15d| |%0.-0d| |%15.-3d|\n\n\n", 1234, 1234, 1234, 1234);
+	// printf("4  printf: |%-15.-10d| |%-10.-15d| |%-0.-0d| |%-15.-3d|\n", 1234, 1234, 1234, 1234); //UNDEFINED BEHAVIOUR
+	// ft_printf("ft_printf: |%-15.-10d| |%-10.-15d| |%-0.-0d| |%-15.-3d|\n", 1234, 1234, 1234, 1234);
+
+	// ===== COMBINAISON NOMBREE + POINT + ETOILE =====
+	// printf("+ nbr.* pos parameter\n");
+	// printf("1  printf: |%15.*d| |%10.*d| |%15.*d| |%10.*d| |%10.*d|\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+	// ft_printf("ft_printf: |%15.*d| |%10.*d| |%15.*d| |%10.*d| |%10.*d|\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+	// printf("+ *.nbr pos parameter\n");
+	// printf("2  printf: |%*.15d| |%*.10d| |%*.15d| |%*.10d| |%*.10d|\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+	// ft_printf("ft_printf: |%*.15d| |%*.10d| |%*.15d| |%*.10d| |%*.10d|\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+	// printf("+ 0*.nbr pos parameter\n");
+	// printf("3  printf: |%0*.15d| |%0*.10d| |%0*.15d| |%0*.10d| |%0*.10d|\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+	// ft_printf("ft_printf: |%0*.15d| |%0*.10d| |%0*.15d| |%0*.10d| |%0*.10d|\n\n", 10,1234, 15,1234, -10,1234, -15,1234, 0,1234);
+
+	// HEXADECIMAL
+	// printf("HEXADECIMAL\n");
+	// printf("1  printf: |%15.*x| |%10.*x| |%15.*x| |%10.*x| |%10.*x|\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+	// ft_printf("ft_printf: |%15.*x| |%10.*x| |%15.*x| |%10.*x| |%10.*x|\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+	// printf("2  printf: |%*.15x| |%*.10x| |%*.15x| |%*.10x| |%*.10x|\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+	// ft_printf("ft_printf: |%*.15x| |%*.10x| |%*.15x| |%*.10x| |%*.10x|\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+	// printf("3  printf: |%0*.15x| |%0*.10x| |%0*.15x| |%0*.10x| |%0*.10x|\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+	// ft_printf("ft_printf: |%0*.15x| |%0*.10x| |%0*.15x| |%0*.10x| |%0*.10x|\n\n", 10,123456, 15,123456, -10,123456, -15,123456, 0,123456);
+
+	// printf("+ nbr.* neg parameter\n");
+	// printf("1  printf: |%15.*d| |%10.*d| |%15.*d| |%10.*d| |%10.*d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+	// ft_printf("ft_printf: |%15.*d| |%10.*d| |%15.*d| |%10.*d| |%10.*d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+	// printf("+ *.nbr neg parameter\n");
+	// printf("2  printf: |%*.15d| |%*.10d| |%*.15d| |%*.10d| |%*.10d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+	// ft_printf("ft_printf: |%*.15d| |%*.10d| |%*.15d| |%*.10d| |%*.10d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+	// printf("+ 0*.nbr neg parameter\n");
+	// printf("3  printf: |%0*.15d| |%0*.10d| |%0*.15d| |%0*.10d| |%0*.10d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+	// ft_printf("ft_printf: |%0*.15d| |%0*.10d| |%0*.15d| |%0*.10d| |%0*.10d|\n", 10,-1234, 15,-1234, -10,-1234, -15,-1234, 0,-1234);
+
+	// printf("HEXADECIMAL\n");
+	// printf("1  printf: |%15.*x| |%10.*x| |%15.*x| |%10.*x| |%10.*x|\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+	// ft_printf("ft_printf: |%15.*x| |%10.*x| |%15.*x| |%10.*x| |%10.*x|\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+	// printf("2  printf: |%*.15x| |%*.10x| |%*.15x| |%*.10x| |%*.10x|\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+	// ft_printf("ft_printf: |%*.15x| |%*.10x| |%*.15x| |%*.10x| |%*.10x|\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+	// printf("3  printf: |%0*.15x| |%0*.10x| |%0*.15x| |%0*.10x| |%0*.10x|\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+	// ft_printf("ft_printf: |%0*.15x| |%0*.10x| |%0*.15x| |%0*.10x| |%0*.10x|\n\n", 10,-123456, 15,-123456, -10,-123456, -15,-123456, 0,-123456);
+
+	// printf("+ nbr.nbr pos parameter %%x\n");
+	// printf("1  printf: |%15.10x| |%10.15x| |%0.0x| |%15.3x|\n", 1234, 1234, 1234, 1234);
+	// ft_printf("ft_printf: |%15.10x| |%10.15x| |%0.0x| |%15.3x|\n", 1234, 1234, 1234, 1234);
+	// printf("+ nbr.nbr neg parameter %%x\n");
+	// printf("1  printf: |%15.10x| |%10.15x| |%0.0x| |%15.3x|\n", -1234, -1234, -1234, -1234);			// 5 spaces, 6 0, 1234
+	// ft_printf("ft_printf: |%15.10x| |%10.15x| |%0.0x| |%15.3x|\n\n\n", -1234, -1234, -1234, -1234);
+
+	printf("test with 0s\n");
+	printf("1  printf: |%d| |%.d| |%10.d| |%.10d| |%10.10d| |%.s|\n", 0, 0, 0, 0, 0, "romain");
+	ft_printf("ft_printf: |%d| |%.d| |%10.d| |%.10d| |%10.10d| |%.s|\n", 0, 0, 0, 0, 0, "romain");
+	printf("1  printf: |%x| |%.x| |%10.x| |%.10x| |%10.10x|\n", 0, 0, 0, 0, 0);
+	ft_printf("ft_printf: |%x| |%.x| |%10.x| |%.10x| |%10.10x|\n\n\n", 0, 0, 0, 0, 0);
+
+	// CARACTERES
+	// printf("+ nbr.nbr char\n");
+	// printf("1  printf: |%15c| |%10c| |%015c| |%010c| |%-15c|\n", 'a', 'b', 'c', 'd', 'e');
+	// ft_printf("ft_printf: |%15c| |%10c| |%015c| |%010c| |%-15c|\n", 'a', 'b', 'c', 'd', 'e');
+	// printf("2  printf: |%*c| |%*c| |%0*c| |%0*c| |%*c|\n", 15,'a', 10,'b', 15,'c', 10,'d', -15,'e');
+	// ft_printf("ft_printf: |%*c| |%*c| |%0*c| |%0*c| |%*c|\n", 15,'a', 10,'b', 15,'c', 10,'d', -15,'e');
+	// printf("3  printf: |%15.10c| |%10.15c| |%0.0c| |%15.3c|\n", 'a', 'b', 'c', 'd');		// flag '.' -> comportement indefini
+	// ft_printf("ft_printf: |%15.10c| |%10.15c| |%0.0c| |%15.3c|\n", 'a', 'b', 'c', 'd');		//
+	// ==> MEME CHOSE QU'AVEC DES INT APPAREMMENT
+
+	printf("|%10d| |%-10d| |%--10d| |%---10d| |%----10d|\n", 1234, 1234, 1234, 1234, 1234);
+	printf("|%*.*d| |%-*.*d| |%--*.*d| |%---*.*d| |%----*.*d|\n", 15,10,1234, 15,10,1234, 15,10,1234, 15,10,1234, 15,10,1234);
+	printf("|%*.*d| |%-*.*d| |%--*.*d| |%---*.*d| |%----*.*d|\n", -15,10,1234, -15,10,1234, -15,10,1234, -15,10,1234, -15,10,1234);
+	printf("|%*.*d| |%-*.*d| |%--*.*d| |%---*.*d| |%----*.*d|\n", 15,-10,1234, 15,-10,1234, 15,-10,1234, 15,-10,1234, 15,-10,1234);
+	printf("|%*.*d| |%-*.*d| |%--*.*d| |%---*.*d| |%----*.*d|\n\n", -15,-10,1234, -15,-10,1234, -15,-10,1234, -15,-10,1234, -15,-10,1234);
+
+	printf("|%15.10d| |%-15.10d| |%--15.10d| |%---15.10d| |%----15.10d|\n", 1234, 1234, 1234, 1234, 1234);
+	// printf("|%15.-10d| |%-15.-10d| |%--15.-10d| |%---15.-10d| |%----15.-10d|\n", 1234, 1234, 1234, 1234, 1234); // UNDEFINED BEHAVIOUR
 	return (0);
 }
 // */
@@ -311,7 +400,7 @@ int		main(void)
 	printf("   printf = \"%5.0x\"\n\n", 0);
 	ft_printf("26:\n");
 	// ft_printf("ft_printf = \"%-2s\"\n", NULL);
-	// printf("   printf = \"%-2s\"\n\n", NULL);
+	printf("   printf = \"%-2s\"\n\n", NULL);
 	ft_printf("27:\n");
 	ft_printf("ft_printf = \"%-10.5d\"\n", 4242);
 	printf("   printf = \"%-10.5d\"\n\n", 4242);
@@ -367,16 +456,16 @@ int		main(void)
 	printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%p\"\n", str));
 	printf("valeur de retour = %d\n\n", printf("   printf = \"%p\"\n", str));
 	ft_printf("45:\n");
-	printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%5p\"\n", str));
+	// printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%5p\"\n", str));
 	printf("valeur de retour = %d\n\n", printf("   printf = \"%5p\"\n", str));
 	ft_printf("46:\n");
-	printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%15p\"\n", str));
+	// printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%15p\"\n", str));
 	printf("valeur de retour = %d\n\n", printf("   printf = \"%15p\"\n", str));
 	ft_printf("47:\n");
 	printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%p\"\n", NULL));
 	printf("valeur de retour = %d\n\n", printf( "   printf = \"%p\"\n", NULL));
 	ft_printf("48:\n");
-	printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%10p\"\n", NULL));
+	// printf("valeur de retour = %d\n", ft_printf("ft_printf = \"%10p\"\n", NULL));
 	printf("valeur de retour = %d\n\n", printf( "   printf = \"%10p\"\n", NULL));
 	ft_printf("49:\n");
 	ft_printf("ft_printf = \"%*.*d\"\n", -10, 5, 42);

@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:57:12 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 20:00:56 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 12:31:53 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int		check_flags(const char *str, t_printf *var)
 	}
 	if (nb_flags > 0)
 	{
-		var->stock_flags = malloc(sizeof(char) * (nb_flags + 1));
+		if (!(var->stock_flags = malloc(sizeof(char) * (nb_flags + 1))))
+			return (0);
 		i = 0;
 		while (i < nb_flags)
 		{
@@ -40,24 +41,15 @@ int		check_flags(const char *str, t_printf *var)
 	return (nb_flags);
 }
 
-void	assign_param_star(t_printf *var)
+void	assign_param(t_printf *var)
 {
-	int i;
-	int nb;
-
-	i = 0;
-	nb = count_elem(var->stock_flags, '*');
-	// var->flag_star = malloc(sizeof(int) * nb);
-	i = 0;
-	nb = 0;
-	while (var->stock_flags[i])
+	if (check_nb(var->stock_flags) && !check_c(var->stock_flags, '*'))
+		var->flag_star[0] = ft_atoi_minus(var->stock_flags);
+	else if (check_c(var->stock_flags, '*'))
 	{
-		if (var->stock_flags[i] == '*')
-		{
-			var->flag_star[nb] = va_arg(var->ap, int);
-			nb++;
-		}
-		i++;
+		var->flag_star[0] = va_arg(var->ap, int);
+		if (check_c(var->stock_flags, '-') && var->flag_star[0] > 0)
+			var->flag_star[0] = -var->flag_star[0];
 	}
 }
 
@@ -78,10 +70,14 @@ void	assign_param_dot(t_printf *var)
 	}
 	if (i > 0)
 	{
-		if (check_nb(&var->stock_flags[0]) && !check_c(&var->stock_flags[0], '*'))
-			var->flag_star[0] = ft_atoi(&var->stock_flags[0]);
-		else if (check_c(&var->stock_flags[0], '*'))
+		if (check_n_nb(&var->stock_flags[0], i) && !check_n_c(&var->stock_flags[0], '*', i))
+			var->flag_star[0] = ft_atoi_minus(&var->stock_flags[0]);
+		else if (check_n_c(&var->stock_flags[0], '*', i))
+		{
 			var->flag_star[0] = va_arg(var->ap, int);
+			if (check_n_c(&var->stock_flags[0], '-', i) && var->flag_star[0] > 0)
+				var->flag_star[0] = -var->flag_star[0];
+		}
 		var->nb_param = 1;
 		if (var->stock_flags[i + 1])
 		{

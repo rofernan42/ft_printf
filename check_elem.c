@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:59:19 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 17:13:20 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 10:27:57 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,40 @@ int		check_c(char *str, char c)
 	return (0);
 }
 
+int		check_n_c(char *str, char c, int n)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && i < n)
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int		check_nb(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		check_n_nb(char *str, int n)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && i < n)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 			return (1);

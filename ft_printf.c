@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 20:56:01 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 12:39:34 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,39 +82,12 @@ void	flag_just_nb(t_printf *var, int *count, int len_param)
 	ft_putstr_fd(var->str, 1, count);
 }
 
-// void	flag_star_dot(t_printf *var, int *count)
-// {
-// 	int i;
-// 	int len_abs;
+void	flag_no_dot(t_printf *var, int *count)
+{
+	
+}
 
-// 	i = 0;
-// 	len_abs = ABS(var->flag_star[0]);
-// 	while (var->stock_flags[i] != '.')
-// 		i++;
-// 	if (i == 0)
-// 	{
-// 		if (var->nbr < 0)
-// 			ft_putchar_fd('-', 1, count);
-// 		print_zeros(var, count, var->flag_star[0] - ft_strlen(var->str));
-// 		ft_putstr_fd(var->str, 1, count);
-// 	}
-// 	else if (i > 0)
-// 	{
-// 		if (count_elem(var->stock_flags, '*') == 1)
-// 			print_one_star(var, count, len_abs);
-// 		else if (count_elem(var->stock_flags, '*') == 2)
-// 		{
-// 			if (var->nbr < 0)
-// 			{
-// 				var->flag_star[0]--;
-// 				len_abs--;
-// 			}
-// 			print_two_stars(var, count, len_abs);
-// 		}
-// 	}
-// }
-
-void	flag_star_dot(t_printf *var, int *count)
+void	flag_dot_nbr(t_printf *var, int *count)
 {
 	int i;
 	int len_abs;
@@ -185,7 +158,7 @@ void	print_flags(t_printf *var, int *count, int val)
 	if (check_c(var->stock_flags, '.'))
 	{
 		if (val == 1)
-			flag_star_dot(var, count);
+			flag_dot_nbr(var, count);
 		if (val == 2)
 			flag_dot_str(var, count);
 	}
@@ -211,8 +184,8 @@ int		ft_printf(const char *str, ...)
 			if (str[i])
 			{
 				i = check_flags(&str[i], &var) + i;
-				if (var.stock_flags && !check_c(var.stock_flags, '.') && check_c(var.stock_flags, '*'))
-					var.flag_star[0] = va_arg(var.ap, int);
+				if (var.stock_flags && !check_c(var.stock_flags, '.'))
+					assign_param(&var);
 				if (var.stock_flags && check_c(var.stock_flags, '.'))
 					assign_param_dot(&var);
 				conversion(str[i], &var, &count);
@@ -221,20 +194,16 @@ int		ft_printf(const char *str, ...)
 				{
 					if (!var.stock_flags)
 						print_param(str[i], &var, &count);
-					else if (var.stock_flags)// && var.stock_flags[0] != '-')
+					else if (var.stock_flags)
 						print_flags(&var, &count, 1);
-					// else if (var.stock_flags && var.stock_flags[0] == '-')
-						// print_flags(&var, &count);
 				}
 				else if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p'
 						|| str[i] == '%'))
 				{
 					if (!var.stock_flags)
 						print_param(str[i], &var, &count);
-					else if (var.stock_flags)// && var.stock_flags[0] != '-')
+					else if (var.stock_flags)
 						print_flags(&var, &count, 2);
-					// else if (var.stock_flags && var.stock_flags[0] == '-')
-						// print_flags(&var, &count);
 				}
 				free_var(&var);
 				i++;

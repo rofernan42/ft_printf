@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 19:00:27 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 12:38:36 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,32 @@ typedef	struct	s_printf
 ** check_elem.c
 */
 int				check_c(char *str, char c);
+int				check_n_c(char *str, char c, int n);
 int				check_nb(char *str);
+int				check_n_nb(char *str, int n);
 int				count_elem(char *str, char c);
 
 /*
 ** init_flags.c
 */
-int		check_flags(const char *str, t_printf *var);
-void	assign_param_star(t_printf *var);
+int				check_flags(const char *str, t_printf *var);
+void			assign_param(t_printf *var);
+void			assign_param_dot(t_printf *var);
 
 /*
 ** print_types.c
 */
-void	print_zeros(t_printf *var, int *count, int len);
-void	print_spaces(t_printf *var, int *count, int len);
-void	print_minus(t_printf *var, int *count, int len);
-void	print_param(char c, t_printf *var, int *count);
-void	assign_param_dot(t_printf *var);
+void			print_zeros(t_printf *var, int *count, int len);
+void			print_spaces(t_printf *var, int *count, int len);
+void			print_minus(t_printf *var, int *count, int len);
+void			print_param(char c, t_printf *var, int *count);
 
 /*
 ** print_stars.c
 */
-void	flag_just_star(t_printf *var, int *count);
-void	print_one_star(t_printf *var, int *count, int len_abs);
-void	print_two_stars(t_printf *var, int *count, int len_abs);
-
-
-
+void			flag_just_star(t_printf *var, int *count);
+void			print_one_star(t_printf *var, int *count, int len_abs);
+void			print_two_stars(t_printf *var, int *count, int len_abs);
 
 /*
 ** conv_*.c
