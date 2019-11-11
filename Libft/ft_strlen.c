@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:36:05 by rofernan          #+#    #+#             */
-/*   Updated: 2019/10/09 12:36:29 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:59:12 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ size_t	ft_strlen(const char *str)
 	int i;
 
 	i = 0;
-	while (str[i])
-		i++;
+	if (str)
+	{
+		while (str[i])
+			i++;
+	}
 	return (i);
 }

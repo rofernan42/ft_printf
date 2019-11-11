@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:03:47 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 16:20:23 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 18:08:50 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,9 @@ void	print_minus(t_printf *var, int *count, int len)
 
 void	print_no_flag(char c, t_printf *var, int *count)
 {
-	if (c == 'c')
-		ft_putchar_fd(var->c, 1, count);
-	if (c == 'p')
-	{
-		ft_putstr_fd("0x", 1, count);
-		ft_putstr_fd(var->p, 1, count);
-	}
-	else
-	{
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
-		ft_putstr_fd(var->str, 1, count);
-	}
+	if (var->nbr < 0)
+		ft_putchar_fd('-', 1, count);
+	ft_putstr_fd(var->str, 1, count);
 }
 
 void	print_flags(t_printf *var, int *count, int val)

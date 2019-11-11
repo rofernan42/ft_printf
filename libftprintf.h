@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 16:38:51 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:22:43 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef	struct	s_printf
 	va_list			ap;
 	char			c; // char %c
 	char			*str; //chaine qui stocke les %d et %s %p etc
-	void			*p;
+	char			*p;
 	int				nbr; //nombre pour stocker int pour checker si le parametre est negatif pour bien placer les '-'
 	char			*stock_flags; // chaine qui stocke tous les flags apres le %
 	int				flag_star[2]; // pointeur sur int qui va stocker tous les parametres correspondant aux * apres le %

@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 16:25:31 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 18:49:21 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void	init_var(t_printf *var)
 
 void	free_var(t_printf *var)
 {
-	free(var->str);
-	var->str = NULL;
+	if (var->str)
+	{
+		free(var->str);
+		var->str = NULL;
+	}
 	if (var->stock_flags)
 	{
 		free(var->stock_flags);
@@ -35,7 +38,7 @@ void	free_var(t_printf *var)
 	}
 }
 
-void	conversion(char c, t_printf *var, int *count)
+void	conversion_param(char c, t_printf *var, int *count)
 {
 	if (c == 'c')
 		conv_c(var, count);
@@ -53,6 +56,14 @@ void	conversion(char c, t_printf *var, int *count)
 		conv_upper_x(var, count);
 	else if (c == '%')
 		conv_pcent(var, count);
+}
+
+void	print_all(char c, t_printf *var, int *count, int val)
+{
+	if (!var->stock_flags)
+		print_no_flag(c, var, count);
+	else if (var->stock_flags)
+		print_flags(var, count, val);
 }
 
 int		ft_printf(const char *str, ...)
@@ -79,23 +90,18 @@ int		ft_printf(const char *str, ...)
 					assign_param(&var);
 				if (var.stock_flags && check_c(var.stock_flags, '.'))
 					assign_param_dot(&var);
-				conversion(str[i], &var, &count);
-				if (str[i] && (str[i] == 'd' || str[i] == 'i' || str[i] == 'u'
-						|| str[i] == 'x' || str[i] == 'X'))
+				conversion_param(str[i], &var, &count);
+				if (var.str)
 				{
-					if (!var.stock_flags)
-						print_no_flag(str[i], &var, &count);
-					else if (var.stock_flags)
-						print_flags(&var, &count, 1);
+					if (str[i] && (str[i] == 'd' || str[i] == 'i' \
+					|| str[i] == 'u' || str[i] == 'x' || str[i] == 'X'))
+						print_all(str[i], &var, &count, 1);
+					else if (str[i] && (str[i] == 'c' || str[i] == 's' \
+					|| str[i] == 'p' || str[i] == '%'))
+						print_all(str[i], &var, &count, 2);
 				}
-				else if (str[i] && (str[i] == 'c' || str[i] == 's' || str[i] == 'p'
-						|| str[i] == '%'))
-				{
-					if (!var.stock_flags)
-						print_no_flag(str[i], &var, &count);
-					else if (var.stock_flags)
-						print_flags(&var, &count, 2);
-				}
+				else
+					ft_putstr_fd("(null)", 1, &count);
 				free_var(&var);
 				i++;
 			}

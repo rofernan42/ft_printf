@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:25:58 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 12:30:46 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:32:46 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ unsigned int	ft_atoi_base(char *str, char *base);
 uintptr_t		ft_atoi_base_uintptr(char *str, char *base);
 char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 char			*ft_convert_base_uintptr(char *nbr, char *base_from, char *base_to);
+char	        *ft_strjoin_free(char const *s1, char const *s2, int par);
 
 #endif
