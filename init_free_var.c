@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_nbr.c                                         :+:      :+:    :+:   */
+/*   init_free_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 10:24:38 by rofernan         ###   ########.fr       */
+/*   Created: 2019/11/12 10:52:18 by rofernan          #+#    #+#             */
+/*   Updated: 2019/11/12 10:52:34 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	conv_di(t_printf *var)
+void	init_var(t_printf *var)
 {
-	int tmp;
-
-	var->nbr = va_arg(var->ap, int);
-	if (var->nbr < 0)
-		tmp = -var->nbr;
-	else
-		tmp = var->nbr;
-	if (var->nbr == 0 && var->nb_param > 0 && var->flag_star[1] == 0)
-		var->str = ft_strdup("");
-	else
-		var->str = ft_itoa_uns(tmp);
-	return (ft_strlen(var->str));
+	var->c = 'a';
+	var->str = NULL;
+	var->nbr = 0;
+	var->stock_flags = NULL;
+	var->flag_star[0] = 0;
+	var->flag_star[1] = 0;
+	var->nb_param = 0;
 }
 
-int	conv_u(t_printf *var)
+void	free_var(t_printf *var)
 {
-	var->str = ft_itoa_uns(va_arg(var->ap, unsigned int));
-	return (ft_strlen(var->str));
+	if (var->str)
+	{
+		free(var->str);
+		var->str = NULL;
+	}
+	if (var->stock_flags)
+	{
+		free(var->stock_flags);
+		var->stock_flags = NULL;
+	}
 }

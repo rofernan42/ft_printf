@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:49:47 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 16:23:15 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 10:30:41 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,23 @@ void		print_params(t_printf *var, int *count, int len_abs)
 {
 	if (var->flag_star[0] >= 0 && var->flag_star[1] >= 0)
 	{
-		print_spaces(var, count, len_prec(var, len_abs, 1));
+		print_spaces(count, len_prec(var, len_abs, 1));
 		if (var->nbr < 0)
 			ft_putchar_fd('-', 1, count);
-		print_zeros(var, count, len_prec(var, len_abs, 2));
+		print_zeros(count, len_prec(var, len_abs, 2));
 		ft_putstr_fd(var->str, 1, count);
 	}
 	else if (var->flag_star[0] < 0 && var->flag_star[1] >= 0)
 	{
 		if (var->nbr < 0)
 			ft_putchar_fd('-', 1, count);
-		print_zeros(var, count, len_prec(var, len_abs, 2));
+		print_zeros(count, len_prec(var, len_abs, 2));
 		ft_putstr_fd(var->str, 1, count);
-		print_spaces(var, count, len_prec(var, len_abs, 3));
+		print_spaces(count, len_prec(var, len_abs, 3));
 	}
 	else if (var->flag_star[0] >= 0 && var->flag_star[1] < 0)
 	{
-		print_spaces(var, count, len_prec(var, len_abs, 4));
+		print_spaces(count, len_prec(var, len_abs, 4));
 		if (var->nbr < 0)
 			ft_putchar_fd('-', 1, count);
 		ft_putstr_fd(var->str, 1, count);

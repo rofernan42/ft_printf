@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:22:57 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 18:16:12 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 10:29:36 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	flag_no_dot(t_printf *var, int *count)
 		{
 			if (var->nbr < 0)
 				ft_putchar_fd('-', 1, count);
-			print_zeros(var, count, len);
+			print_zeros(count, len);
 		}
 		else
 		{
-			print_spaces(var, count, len);
+			print_spaces(count, len);
 			if (var->nbr < 0)
 				ft_putchar_fd('-', 1, count);
 		}
@@ -69,15 +69,15 @@ void	flag_dot_str(t_printf *var, int *count)
 	else if (find_c(var->stock_flags, '.') > 0)
 	{
 		if (var->nb_param == 1)
-			print_spaces(var, count, len_abs);
+			print_spaces(count, len_abs);
 		else if (var->nb_param == 2)
 		{
 			if (var->flag_star[0] >= 0)
-				print_spaces(var, count, var->flag_star[0] - \
+				print_spaces(count, var->flag_star[0] - \
 											ft_strlen(var->str));
 			ft_putstr_fd(var->str, 1, count);
 			if (var->flag_star[0] < 0)
-				print_spaces(var, count, len_abs - ft_strlen(var->str));
+				print_spaces(count, len_abs - ft_strlen(var->str));
 		}
 	}
 }

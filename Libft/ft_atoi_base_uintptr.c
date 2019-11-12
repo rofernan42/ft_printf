@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 11:54:30 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 14:46:13 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 10:13:22 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int		compare_base(char c, char *base)
 	return (-1);
 }
 
-uintptr_t	ft_atoi_base_uintptr(char *str, char *base)
+uintptr_t		ft_atoi_base_uintptr(char *str, char *base)
 {
 	int				i;
 	uintptr_t		nb;

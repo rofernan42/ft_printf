@@ -6,13 +6,13 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:03:47 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 18:08:50 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 10:27:53 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	print_zeros(t_printf *var, int *count, int len)
+void	print_zeros(int *count, int len)
 {
 	while (len > 0)
 	{
@@ -21,7 +21,7 @@ void	print_zeros(t_printf *var, int *count, int len)
 	}
 }
 
-void	print_spaces(t_printf *var, int *count, int len)
+void	print_spaces(int *count, int len)
 {
 	while (len > 0)
 	{
@@ -42,7 +42,7 @@ void	print_minus(t_printf *var, int *count, int len)
 	}
 }
 
-void	print_no_flag(char c, t_printf *var, int *count)
+void	print_no_flag(t_printf *var, int *count)
 {
 	if (var->nbr < 0)
 		ft_putchar_fd('-', 1, count);

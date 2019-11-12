@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 10:36:06 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 20:30:37 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 11:17:56 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 char	*ft_strndup(const char *src, size_t n)
 {
 	char	*dest;
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
 	len = 0;
+	if (!src)
+		return (NULL);
 	while (src[len] && len < n)
 		len++;
 	if (!(dest = malloc(sizeof(*dest) * (len + 1))))

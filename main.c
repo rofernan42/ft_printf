@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 18:47:55 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 10:54:04 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -367,14 +367,9 @@ int		main(void)
 {
 	char	*str;
 	str = "yoyo";
-	printf("   printf = %15.d\n", 42);
-	printf("   printf = %.15d\n", 42);
-	printf("   printf = %15d\n\n", 42);
-	printf("   printf = \"%5%\"\n\n");
+
 	printf("   printf = \"%-2s\"\n\n", NULL);
-
-
-	printf("   printf = \"%x\"\n\n", -42);
+	printf("   printf = \"%x\"\n", -42);
 	ft_printf("ft_printf = \"%x\"\n\n", -42);
 	ft_printf("2:\n");
 	ft_printf("ft_printf = \"%.10d\"\n", 4242);
