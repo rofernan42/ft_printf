@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 10:55:13 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 12:37:04 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef	struct	s_printf
 	char			*stock_flags; //chaine qui stocke tous les flags apres le %
 	int				flag_star[2]; //pointeur sur int qui va stocker tous les parametres correspondant aux * apres le %
 	int				nb_param; //nombre de parametres autour du '.' (1 ou 2)
-	// ???			n;
+	int				*n;// conversion n: aucun flag tolere; stocke le nombre de caracteres ecrits AVANT le %n dans un pointeur sur int
 	float			f;
 	// ???			g;
 	char			*e;
@@ -104,6 +104,20 @@ int				conv_u(t_printf *var);
 int				conv_lower_x(t_printf *var);
 int				conv_upper_x(t_printf *var);
 int				conv_pcent(t_printf *var);
+
+/*
+** CONV_BONUS.C ====================================================================
+*/
+int				conv_n(t_printf *var, int *count);
+int				conv_f(t_printf *var);
+int				conv_g(t_printf *var);
+int				conv_e(t_printf *var);
+
+/*
+** CONVERSION.C ====================================================================
+*/
+void	conversion_param(char c, t_printf *var);
+void	conversion_bonus(char c, t_printf *var, int *count);
 
 /*
 ** FT_PRINTF.C =================================================================
