@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 16:21:15 by rofernan          #+#    #+#             */
-/*   Updated: 2019/10/07 16:30:00 by rofernan         ###   ########.fr       */
+/*   Created: 2019/11/12 12:13:28 by rofernan          #+#    #+#             */
+/*   Updated: 2019/11/12 15:01:54 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "../includes/libftprintf.h"
+
+void	conversion_param(char c, t_printf *var)
 {
-	if (c >= 97 && c <= 122)
-		c = c - 32;
-	return (c);
+	if (c == 'c')
+		conv_c(var);
+	else if (c == 's')
+		conv_s(var);
+	else if (c == 'p')
+		conv_p(var);
+	else if (c == 'd' || c == 'i')
+		conv_di(var);
+	else if (c == 'u')
+		conv_u(var);
+	else if (c == 'x')
+		conv_lower_x(var);
+	else if (c == 'X')
+		conv_upper_x(var);
+	else if (c == '%')
+		conv_pcent(var);
 }

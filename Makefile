@@ -5,70 +5,83 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/08/15 12:07:06 by juligonz          #+#    #+#              #
-#    Updated: 2019/10/30 15:33:05 by rofernan         ###   ########.fr        #
+#    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
+#    Updated: 2019/11/12 15:44:50 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=	libftprintf.a
+NAME 			=	libftprintf.a
 
-LIBFT 		=	./libft/ft_memset.c				\
-				./libft/ft_bzero.c				\
-				./libft/ft_memcpy.c				\
-				./libft/ft_memccpy.c			\
-				./libft/ft_memmove.c			\
-				./libft/ft_memchr.c				\
-				./libft/ft_memcmp.c				\
-				./libft/ft_strlen.c				\
-				./libft/ft_isalpha.c			\
-				./libft/ft_isdigit.c			\
-				./libft/ft_isalnum.c			\
-				./libft/ft_isascii.c			\
-				./libft/ft_isprint.c			\
-				./libft/ft_toupper.c			\
-				./libft/ft_tolower.c			\
-				./libft/ft_strchr.c				\
-				./libft/ft_strrchr.c			\
-				./libft/ft_strncmp.c			\
-				./libft/ft_strlcpy.c			\
-				./libft/ft_strlcat.c			\
-				./libft/ft_strnstr.c			\
-				./libft/ft_atoi.c				\
-				./libft/ft_calloc.c				\
-				./libft/ft_strdup.c				\
-				./libft/ft_substr.c				\
-				./libft/ft_strjoin.c			\
-				./libft/ft_strtrim.c			\
-				./libft/ft_split.c				\
-				./libft/ft_itoa.c				\
-				./libft/ft_strmapi.c			\
-				./libft/ft_putchar_fd.c			\
-				./libft/ft_putstr_fd.c			\
-				./libft/ft_putendl_fd.c			\
-				./libft/ft_putnbr_fd.c			\
+SRCS_PATH		=	./srcs
+LIB_PATH		=	./libft
+INC_PATH		=	./includes
+OBJS_PATH		=	./objs
+OBJSLIB_PATH	=	./objs
 
-PRINTF		=	./ft_printf.c	\
+LIB_NAME		=	ft_strlen.c					\
+					ft_atoi.c					\
+					ft_strdup.c					\
+					ft_strjoin_free.c			\
+					ft_itoa.c					\
+					ft_putchar_fd.c				\
+					ft_putstr_fd.c				\
+					ft_atoi_minus.c				\
+					ft_strndup.c				\
+					ft_itoa_uns.c				\
+					ft_itoa_uintptr.c			\
+					ft_atoi_base.c				\
+					ft_atoi_base_uintptr.c		\
+					ft_convert_base.c			\
+					ft_convert_base_uintptr.c	\
 
-SRCS		=	$(LIBFT) $(PRINTF)
+SRCS_NAME		=	case_flags.c				\
+					check_elem.c				\
+					conv_hex.c					\
+					conv_nbr.c					\
+					conv_str.c					\
+					conversion.c				\
+					count_elems.c				\
+					init_flags.c				\
+					init_free_var.c				\
+					print_flags.c				\
+					print_types.c				\
+					ft_printf.c					\
 
-OBJ			=	$(SRCS:.c=.o)
+INC_NAME		=	libftprintf.h
 
-CC			=	gcc
+OBJS_NAME		=	$(SRCS_NAME: .c=.o)
+OBJSLIB_NAME	=	$(LIB_NAME:.c=.o)
 
-CFLAGS		=	-Wall -Wextra -Werror -I./Libft/
+SRCS			=	$(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
+LIB				=	$(addprefix $(LIB_PATH)/, $(LIB_NAME))
+INC				=	$(addprefix $(INC_PATH)/, $(INC_NAME))
+OBJS			=	$(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
+OBJSLIB			=	$(addprefix $(OBJSLIB_PATH)/, $(OBJSLIB_NAME))
 
-all:			$(NAME)
+CC				=	gcc
 
-$(NAME):		$(OBJ)
-				ar rc $(NAME) $(OBJ)
-				ranlib $(NAME)
+CFLAGS			=	-Wall -Wextra -Werror -I./includes
+
+all:				$(NAME)
+
+$(NAME):			$(OBJS) $(OBJSLIB)
+					ar rc $(NAME) $(OBJS) $(OBJSLIB)
+					ranlib $(NAME)
+
+$(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
+					@mkdir $(OBJS_PATH) 2> /dev/null || true
+					@$(CC) -o $@ -c $<
+
+$(OBJSLIB_PATH)/%.o:$(LIB_PATH)/%.c
+					@mkdir $(OBJSLIB_PATH) 2> /dev/null || true
+					@$(CC) -o $@ -c $<
 
 clean:
-				rm -f $(OBJ)
+					rm -f $(OBJ)
 
-fclean:			clean
-				rm -f $(NAME)
+fclean:				clean
+					rm -f $(NAME)
 
-re:				fclean all bonus
+re:					fclean all bonus
 
-.PHONY:			clean fclean re all bonus
+.PHONY:				clean fclean re all bonus

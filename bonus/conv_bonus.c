@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   conv_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 12:25:49 by rofernan          #+#    #+#             */
-/*   Updated: 2019/10/11 11:33:12 by rofernan         ###   ########.fr       */
+/*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
+/*   Updated: 2019/11/12 15:01:36 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	conv_n(t_printf *var, int *count)
 {
-	unsigned char *temp_dst;
-	unsigned char *temp_src;
+	int *tmp;
 
-	temp_dst = (unsigned char *)dst;
-	temp_src = (unsigned char *)src;
-	if (temp_dst == temp_src || n == 0)
-		return (temp_dst);
-	while (n > 0)
-	{
-		*temp_dst++ = *temp_src++;
-		n--;
-	}
-	return (dst);
+	tmp = va_arg(var->ap, int*);
+	*tmp = *count;
+	var->str = ft_strdup("");
+	return (0);
+}
+
+int	conv_f(t_printf *var)
+{
+	return (0);
+}
+
+int	conv_g(t_printf *var)
+{
+	return (0);
+}
+
+int	conv_e(t_printf *var)
+{
+	return (0);
 }

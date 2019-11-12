@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   init_free_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 12:25:49 by rofernan          #+#    #+#             */
-/*   Updated: 2019/10/11 11:33:15 by rofernan         ###   ########.fr       */
+/*   Created: 2019/11/12 10:52:18 by rofernan          #+#    #+#             */
+/*   Updated: 2019/11/12 15:02:13 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	init_var(t_printf *var)
 {
-	size_t			i;
-	unsigned char	*temp_dst;
-	unsigned char	*temp_src;
+	var->c = 'a';
+	var->str = NULL;
+	var->nbr = 0;
+	var->stock_flags = NULL;
+	var->flag_star[0] = 0;
+	var->flag_star[1] = 0;
+	var->nb_param = 0;
+}
 
-	i = 0;
-	temp_dst = (unsigned char *)dst;
-	temp_src = (unsigned char *)src;
-	while (i < n)
+void	free_var(t_printf *var)
+{
+	if (var->str)
 	{
-		temp_dst[i] = temp_src[i];
-		if (temp_src[i] == (unsigned char)c)
-		{
-			temp_dst[i] = temp_src[i];
-			return (&temp_dst[i + 1]);
-		}
-		i++;
+		free(var->str);
+		var->str = NULL;
 	}
-	return (0);
+	if (var->stock_flags)
+	{
+		free(var->stock_flags);
+		var->stock_flags = NULL;
+	}
 }
