@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 10:58:24 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 11:43:50 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ void	print_conversion(char c, t_printf *var, int *count)
 		ft_putstr_fd("(null)", 1, count);
 }
 
+void	assign_and_convert(t_printf *var, int *count, char c)
+{
+	if (var->stock_flags && !check_c(var->stock_flags, '.'))
+		assign_param(var);
+	if (var->stock_flags && check_c(var->stock_flags, '.'))
+		assign_param_dot(var);
+	conversion_param(c, var);
+	print_conversion(c, var, count);
+	free_var(var);
+}
+
 int		ft_printf(const char *str, ...)
 {
 	int			i;
@@ -73,23 +84,13 @@ int		ft_printf(const char *str, ...)
 			if (str[i])
 			{
 				i = check_flags(&str[i], &var) + i;
-				if (var.stock_flags && !check_c(var.stock_flags, '.'))
-					assign_param(&var);
-				if (var.stock_flags && check_c(var.stock_flags, '.'))
-					assign_param_dot(&var);
-				conversion_param(str[i], &var);
-				print_conversion(str[i], &var, &count);
-				free_var(&var);
+				assign_and_convert(&var, &count, str[i]);
 				i++;
 			}
 		}
 		if (str[i] && str[i] != '%')
-		{
-			ft_putchar_fd(str[i], 1, &count);
-			i++;
-		}
+			ft_putchar_fd(str[i++], 1, &count);
 	}
 	va_end(var.ap);
-	// printf("%d\n", count);
 	return (count);
 }

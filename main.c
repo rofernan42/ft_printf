@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 10:54:04 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 11:43:21 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -530,6 +530,13 @@ int		main(void)
 
 	printf("%s %s\n", NULL, str);
 	ft_printf("%s %s\n", NULL, str);
+
+
+	printf("%%%%%%\n");
+	ft_printf("%%%%%%\n");
+
+	printf("");
+	ft_printf("");
 	// printf("%d %d\n", NULL, str);
 	// ft_printf("%d %d\n", NULL, str);
 	// char *haha;
