@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:36:05 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 09:57:53 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:16:39 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 size_t	ft_strlen(const char *str)
 {

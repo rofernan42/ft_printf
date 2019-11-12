@@ -6,13 +6,13 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 14:47:22 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:47:50 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 
-void	print_all(t_printf *var, int *count, int val)
+static void	print_all(t_printf *var, int *count, int val)
 {
 	if (!var->stock_flags)
 		print_no_flag(var, count);
@@ -20,7 +20,7 @@ void	print_all(t_printf *var, int *count, int val)
 		print_flags(var, count, val);
 }
 
-void	print_conversion(char c, t_printf *var, int *count)
+static void	print_conversion(char c, t_printf *var, int *count)
 {
 	if (var->str)
 	{
@@ -35,7 +35,7 @@ void	print_conversion(char c, t_printf *var, int *count)
 		ft_putstr_fd("(null)", 1, count);
 }
 
-void	print_conversion_bonus(char c, t_printf *var, int *count)
+static void	print_conversion_bonus(char c, t_printf *var, int *count)
 {
 	if (var->str)
 	{
@@ -48,7 +48,7 @@ void	print_conversion_bonus(char c, t_printf *var, int *count)
 		ft_putstr_fd("(null)", 1, count);
 }
 
-void	assign_and_convert(t_printf *var, int *count, char c)
+static void	assign_and_convert(t_printf *var, int *count, char c)
 {
 	if (c && (c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X' \
 		|| c == 'c' || c == 's' || c == 'p' || c == '%'))
@@ -72,7 +72,7 @@ void	assign_and_convert(t_printf *var, int *count, char c)
 	free_var(var);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
 	int			i;
 	int			count;

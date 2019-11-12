@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:06:50 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/08 14:59:52 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:16:02 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 static	int		size_str(uintptr_t n)
 {

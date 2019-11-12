@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:30:18 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 17:30:35 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:16:34 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 char	*ft_strjoin_free(char const *s1, char const *s2, int par)
 {

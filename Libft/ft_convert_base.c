@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 18:28:02 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/04 18:42:14 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:15:58 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 static int	check_base(char *base)
 {

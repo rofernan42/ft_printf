@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:28 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 14:14:30 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:35:32 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/libftprintf.h"
 
 void	conversion_bonus(char c, t_printf *var, int *count)
 {

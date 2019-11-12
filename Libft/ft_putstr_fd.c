@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:27:27 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/11 18:15:44 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:16:26 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libftprintf.h"
 
 void	ft_putstr_fd(char *s, int fd, int *count)
 {
