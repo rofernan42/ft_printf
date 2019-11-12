@@ -6,11 +6,11 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 16:38:46 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:59:44 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libftprintf.h"
+#include "../includes/libftprintf.h"
 
 /*
 int main()

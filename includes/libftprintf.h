@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 16:44:21 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:33:13 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ typedef	struct		s_printf
 	va_list			ap;
 	char			c;
 	char			*str;
+	int				p;
 	int				nbr;
+	unsigned int	u;
 	char			*stock_flags;
 	int				flag_star[2];
 	int				nb_param;

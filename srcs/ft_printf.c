@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 16:40:49 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:36:16 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static void	print_conversion(char c, t_printf *var, int *count)
 {
 	if (var->str)
 	{
-		if (c && (c == 'd' || c == 'i' \
+		if (c && (c == 'p' || c == 'd' || c == 'i' \
 		|| c == 'u' || c == 'x' || c == 'X'))
 			print_all(var, count, 1);
-		else if (c && (c == 'c' || c == 's' \
-		|| c == 'p' || c == '%'))
+		else if (c && (c == 'c' || c == 's' || c == '%'))
 			print_all(var, count, 2);
 	}
 	else

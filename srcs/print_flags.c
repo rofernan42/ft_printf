@@ -6,13 +6,13 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:49:47 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 15:02:18 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:39:58 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	len_prec(t_printf *var, int len_abs, int val)
+static int		len_prec(t_printf *var, int len_abs, int val)
 {
 	int len;
 	int test;
@@ -41,20 +41,26 @@ static int	len_prec(t_printf *var, int len_abs, int val)
 	return (len);
 }
 
-void		print_params(t_printf *var, int *count, int len_abs)
+static void		print_prefix(t_printf *var, int *count)
+{
+	if (var->nbr < 0)
+		ft_putchar_fd('-', 1, count);
+	if (var->p == 1)
+		ft_putstr_fd("0x", 1, count);
+}
+
+void			print_params(t_printf *var, int *count, int len_abs)
 {
 	if (var->flag_star[0] >= 0 && var->flag_star[1] >= 0)
 	{
 		print_spaces(count, len_prec(var, len_abs, 1));
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
+		print_prefix(var, count);
 		print_zeros(count, len_prec(var, len_abs, 2));
 		ft_putstr_fd(var->str, 1, count);
 	}
 	else if (var->flag_star[0] < 0 && var->flag_star[1] >= 0)
 	{
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
+		print_prefix(var, count);
 		print_zeros(count, len_prec(var, len_abs, 2));
 		ft_putstr_fd(var->str, 1, count);
 		print_spaces(count, len_prec(var, len_abs, 3));
@@ -62,8 +68,7 @@ void		print_params(t_printf *var, int *count, int len_abs)
 	else if (var->flag_star[0] >= 0 && var->flag_star[1] < 0)
 	{
 		print_spaces(count, len_prec(var, len_abs, 4));
-		if (var->nbr < 0)
-			ft_putchar_fd('-', 1, count);
+		print_prefix(var, count);
 		ft_putstr_fd(var->str, 1, count);
 	}
 	else if (var->flag_star[0] < 0 && var->flag_star[1] < 0)

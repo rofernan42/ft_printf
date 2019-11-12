@@ -6,13 +6,21 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:22:57 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 15:00:45 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:06:13 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	flag_no_dot(t_printf *var, int *count)
+static void	print_prefix(t_printf *var, int *count)
+{
+	if (var->nbr < 0)
+		ft_putchar_fd('-', 1, count);
+	if (var->p == 1)
+		ft_putstr_fd("0x", 1, count);
+}
+
+void		flag_no_dot(t_printf *var, int *count)
 {
 	int len;
 	int len_abs;
@@ -21,19 +29,18 @@ void	flag_no_dot(t_printf *var, int *count)
 	if ((len = len_abs - ft_strlen(var->str)) <= 0)
 		len = 0;
 	(var->nbr < 0 || var->c == 0) ? len-- : len;
+	(var->p == 1) ? len = len - 2 : len;
 	if (var->flag_star[0] >= 0)
 	{
 		if (count_zeros(var->stock_flags) > 0)
 		{
-			if (var->nbr < 0)
-				ft_putchar_fd('-', 1, count);
+			print_prefix(var, count);
 			print_zeros(count, len);
 		}
 		else
 		{
 			print_spaces(count, len);
-			if (var->nbr < 0)
-				ft_putchar_fd('-', 1, count);
+			print_prefix(var, count);
 		}
 		ft_putstr_fd(var->str, 1, count);
 	}
@@ -41,7 +48,7 @@ void	flag_no_dot(t_printf *var, int *count)
 		print_minus(var, count, len);
 }
 
-void	flag_dot_nbr(t_printf *var, int *count)
+void		flag_dot_nbr(t_printf *var, int *count)
 {
 	int len_abs;
 
@@ -51,10 +58,15 @@ void	flag_dot_nbr(t_printf *var, int *count)
 		var->flag_star[0]--;
 		len_abs--;
 	}
+	if (var->p == 1)
+	{
+		var->flag_star[0] = var->flag_star[0] - 2;
+		len_abs = len_abs - 2;
+	}
 	print_params(var, count, len_abs);
 }
 
-void	flag_dot_str(t_printf *var, int *count)
+void		flag_dot_str(t_printf *var, int *count)
 {
 	int len_abs;
 

@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
-#    Updated: 2019/11/12 16:34:34 by rofernan         ###   ########.fr        #
+#    Updated: 2019/11/12 18:04:43 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,6 @@ clean:
 fclean:					clean
 						rm -rf ./objs $(NAME)
 
-re:						fclean all bonus
+re:						fclean all
 
 .PHONY:					clean fclean re all bonus
