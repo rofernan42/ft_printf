@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:22:57 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/13 14:47:00 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:07:42 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ static void	print_prefix(t_printf *var, int *count)
 static void	char_or_str(t_printf *var, int *count)
 {
 	if (var->c == 0)
-	{
 		ft_putchar_fd(var->c, 1, count);
-		if (var->flag_star[0] == 0 && var->flag_star[1] == 0)
-			*count = *count - 1;
-	}
 	else
 		ft_putstr_fd(var->str, 1, count);
 }

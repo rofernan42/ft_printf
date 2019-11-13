@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:55:40 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/13 15:18:11 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:08:33 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,32 +92,32 @@ int main()
 	// res = printf("|%c|\n", 0);
 	// printf("%d\n", res);
 	// res = ft_printf("|%c|\n", 0);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("   printf: |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c|\n", 0,1,2,3,4,5,6,7,8,9);
 	// printf("%d\n", res);
 	// res = ft_printf("ft_printf: |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c| |%c|\n", 0,1,2,3,4,5,6,7,8,9);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("|%3c|\n", 0);
 	// printf("%d\n", res);
 	// res = ft_printf("|%3c|\n", 0);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("|%3c|\n", 1);
 	// printf("%d\n", res);
 	// res = ft_printf("|%3c|\n", 1);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("   printf: |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c|\n", 0,1,2,3,4,5,6,7,8,9);
 	// printf("%d\n", res);
 	// res = ft_printf("ft_printf: |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c| |%3c|\n", 0,1,2,3,4,5,6,7,8,9);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("   printf: |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c|\n", 0,1,2,3,4,5,6,7,8,9);
 	// printf("%d\n", res);
 	// res = ft_printf("ft_printf: |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c| |%.c|\n", 0,1,2,3,4,5,6,7,8,9);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 
 	// res = printf("   printf: |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c| |%3.4c|\n", 0,1,2,3,4,5,6,7,8,9);
 	// printf("%d\n", res);
@@ -126,7 +126,7 @@ int main()
 	// res = printf("   printf: |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c|\n", 0,1,2,3,4,5,6,7,8,9);
 	// printf("%d\n", res);
 	// res = ft_printf("ft_printf: |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c| |%-3.4c|\n", 0,1,2,3,4,5,6,7,8,9);
-	// printf("%d\n", res);
+	// printf("%d\n\n", res);
 //=======================================================================================================
 	// printf("   printf: {%*10*d}, {%10*10d}, {%-*10*d}, {%-10*10d}\n", 5,0, 5,0, 5,0, 5,0);
 	// ft_printf("ft_printf: {%*10*d}, {%10*10d}, {%-*10*d}, {%-10*10d}\n", 5,0, 5,0, 5,0, 5,0);
@@ -167,45 +167,60 @@ int main()
 	// printf("5  printf: |%-15.*d| |%-10.*d| |%-15.*d|\n", -10,1234, -15,1234, -3,1234); //UNDEFINED BEHAVIOUR
 	// ft_printf("ft_printf: |%-15.*d| |%-10.*d| |%-15.*d|\n", -10,1234, -15,1234, -3,1234);
 
-	res = printf("   printf: |%s| |%s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%s| |%s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%s| |%s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%s| |%s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%4s| |%4s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%4s| |%4s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%4s| |%4s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%4s| |%4s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%4.s| |%4.s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%4.s| |%4.s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%4.s| |%4.s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%4.s| |%4.s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%.3s| |%.3s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%.3s| |%.3s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%.3s| |%.3s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%.3s| |%.3s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%-.3s| |%-.3s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%-.3s| |%-.3s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%-.3s| |%-.3s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%-.3s| |%-.3s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%8.3s| |%8.3s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%8.3s| |%8.3s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%8.3s| |%8.3s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%8.3s| |%8.3s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%-8.3s| |%-8.3s|\n", NULL, "haha");
-	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%-8.3s| |%-8.3s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	// res = printf("   printf: |%-8.3s| |%-8.3s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%-8.3s| |%-8.3s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
 
-	res = printf("   printf: |%8.7s| |%8.7s|\n", NULL, "haha");
+	// res = printf("   printf: |%8.7s| |%8.7s|\n", NULL, "haha");
+	// printf("%d\n", res);
+	// res = ft_printf("ft_printf: |%8.7s| |%8.7s|\n", NULL, "haha");
+	// printf("%d\n\n", res);
+
+	// res = printf("{%*c}\n", 0, '\0');
+	// printf("%d\n", res);
+	// res = ft_printf("{%*c}\n", 0, '\0');
+	// printf("%d\n", res);
+
+	// res = printf("{%*c}\n", -15, 0);
+	// printf("%d\n", res);
+	// res = ft_printf("{%*c}\n", -15, 0);
+	// printf("%d\n", res);
+
+	res = printf("%s", "");
 	printf("%d\n", res);
-	res = ft_printf("ft_printf: |%8.7s| |%8.7s|\n", NULL, "haha");
-	printf("%d\n\n", res);
+	res = ft_printf("%s", "");
+	printf("%d\n", res);
 
 	return 0; 
 }
