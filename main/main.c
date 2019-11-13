@@ -6,13 +6,13 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:31:00 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/13 11:00:49 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:22:20 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-/*
+// /*
 int main()
 {
 	unsigned int i = 2147483650;
@@ -370,8 +370,8 @@ printf(" ===== ETOILES + POINT ===== \n\n");
 
 	return (0);
 }
-*/
-// /*
+// */
+/*
 int		main(void)
 {
 	char	*str;
@@ -554,4 +554,4 @@ int		main(void)
 	// printf("%s\n", haha);
 	return (0);
 }
-// */
+*/
