@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 18:36:16 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 11:49:36 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	print_all(t_printf *var, int *count, int val)
 
 static void	print_conversion(char c, t_printf *var, int *count)
 {
-	if (var->str)
+	if (var->str || var->c >= 0)
 	{
 		if (c && (c == 'p' || c == 'd' || c == 'i' \
 		|| c == 'u' || c == 'x' || c == 'X'))

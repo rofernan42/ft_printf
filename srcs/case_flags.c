@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:22:57 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 19:06:13 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:21:19 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@ static void	print_prefix(t_printf *var, int *count)
 		ft_putchar_fd('-', 1, count);
 	if (var->p == 1)
 		ft_putstr_fd("0x", 1, count);
+}
+
+static void	char_or_str(t_printf *var, int *count)
+{
+	if (var->c == 0)
+	{
+		ft_putchar_fd(var->c, 1, count);
+		if (var->flag_star[0] == 0 && var->flag_star[1] == 0)
+			*count = *count - 1;
+	}
+	else
+		ft_putstr_fd(var->str, 1, count);
 }
 
 void		flag_no_dot(t_printf *var, int *count)
@@ -42,7 +54,7 @@ void		flag_no_dot(t_printf *var, int *count)
 			print_spaces(count, len);
 			print_prefix(var, count);
 		}
-		ft_putstr_fd(var->str, 1, count);
+		char_or_str(var, count);
 	}
 	else if (var->flag_star[0] < 0)
 		print_minus(var, count, len);
@@ -76,9 +88,9 @@ void		flag_dot_str(t_printf *var, int *count)
 		len_abs--;
 		var->flag_star[0]--;
 	}
-	if (find_c(var->stock_flags, '.') == 0)
-		ft_putstr_fd(var->str, 1, count);
-	else if (find_c(var->stock_flags, '.') > 0)
+	if (find_c(var->stock_flags, '.', 1) == 0)
+		char_or_str(var, count);
+	else if (find_c(var->stock_flags, '.', 1) > 0)
 	{
 		if (var->nb_param == 1)
 			print_spaces(count, len_abs);
@@ -87,7 +99,7 @@ void		flag_dot_str(t_printf *var, int *count)
 			if (var->flag_star[0] >= 0)
 				print_spaces(count, var->flag_star[0] - \
 											ft_strlen(var->str));
-			ft_putstr_fd(var->str, 1, count);
+			char_or_str(var, count);
 			if (var->flag_star[0] < 0)
 				print_spaces(count, len_abs - ft_strlen(var->str));
 		}

@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 18:33:13 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:24:33 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char				*ft_itoa(int n);
 void				ft_putchar_fd(char c, int fd, int *count);
 void				ft_putstr_fd(char *s, int fd, int *count);
 
-char				*ft_strjoin_free(char const *s1, char const *s2, int par);
 int					ft_atoi_minus(const char *str);
 char				*ft_strndup(const char *src, size_t n);
 char				*ft_itoa_uns(unsigned int n);
@@ -60,7 +59,7 @@ char				*ft_convert_base_uintptr(char *nbr, char *base_from, \
 typedef	struct		s_printf
 {
 	va_list			ap;
-	char			c;
+	int				c;
 	char			*str;
 	int				p;
 	int				nbr;
@@ -80,7 +79,12 @@ int					check_c(char *str, char c);
 int					check_n_c(char *str, char c, int n);
 int					check_nb(char *str);
 int					check_n_nb(char *str, int n);
-int					find_c(char *str, char c);
+
+/*
+** FIND_ELEM.C ================================================================
+*/
+int					find_c(char *str, char c, int val);
+int					find_c_invert(char *str, char c, int val);
 
 /*
 ** COUNT_ELEMS.C ===============================================================

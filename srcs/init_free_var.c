@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:52:18 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 18:33:52 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 11:41:02 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_var(t_printf *var)
 {
-	var->c = 'a';
+	var->c = -1;
 	var->str = NULL;
 	var->p = 0;
 	var->nbr = 0;

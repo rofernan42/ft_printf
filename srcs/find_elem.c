@@ -1,69 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_elem.c                                       :+:      :+:    :+:   */
+/*   find_elem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:59:19 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/13 13:58:49 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/13 13:56:42 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int		check_c(char *str, char c)
+int		find_c(char *str, char c, int val)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	if (val == 1)
 	{
-		if (str[i] == c)
-			return (1);
-		i++;
+		while (str[i] && str[i] != c)
+			i++;
 	}
-	return (0);
+	else if (val == 2)
+	{
+		while (str[i] && !(str[i] >= '0' && str[i] <= '9'))
+			i++;
+	}
+	return (i);
 }
 
-int		check_n_c(char *str, char c, int n)
+int		find_c_invert(char *str, char c, int val)
 {
 	int i;
 
-	i = 0;
-	while (str[i] && i < n)
+	i = ft_strlen(str) - 1;
+	if (val == 1)
 	{
-		if (str[i] == c)
-			return (1);
-		i++;
+		while (i > 0 && str[i] != c)
+			i--;
 	}
-	return (0);
-}
-
-int		check_nb(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
+	else if (val == 2)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			return (1);
-		i++;
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			while (i > 0 && !(str[i] >= '0' && str[i] <= '9'))
+				i--;
+		}
+		else
+		{
+			while (i > 0 && str[i] >= '0' && str[i] <= '9')
+				i--;
+			i++;
+		}
 	}
-	return (0);
-}
-
-int		check_n_nb(char *str, int n)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && i < n)
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			return (1);
-		i++;
-	}
-	return (0);
+	return (i);
 }

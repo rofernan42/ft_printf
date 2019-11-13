@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
-#    Updated: 2019/11/12 18:04:43 by rofernan         ###   ########.fr        #
+#    Updated: 2019/11/13 14:24:49 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ OBJS_BONUS_PATH		=	./objs
 LIB_NAME			=	ft_strlen.c					\
 						ft_atoi.c					\
 						ft_strdup.c					\
-						ft_strjoin_free.c			\
 						ft_itoa.c					\
 						ft_putchar_fd.c				\
 						ft_putstr_fd.c				\
@@ -44,6 +43,7 @@ SRCS_NAME			=	case_flags.c				\
 						conv_str.c					\
 						conversion.c				\
 						count_elems.c				\
+						find_elem.c					\
 						init_flags.c				\
 						init_free_var.c				\
 						print_flags.c				\
