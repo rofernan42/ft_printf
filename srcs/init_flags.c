@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:57:12 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/14 12:11:08 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:16:43 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,18 @@ void		assign_param(t_printf *var)
 	}
 }
 
+static void	second_param(t_printf *var, int i)
+{
+	if (check_nb(&var->stock_flags[i + 1]) && \
+		!check_c(&var->stock_flags[i + 1], '*'))
+	{
+		if ((var->flag_star[1] = ft_atoi(&var->stock_flags[i + 1])) < 0)
+			var->flag_star[0] = var->flag_star[1];
+	}
+	else if (check_c(&var->stock_flags[i], '*'))
+		var->flag_star[1] = va_arg(var->ap, int);
+}
+
 void		assign_param_dot(t_printf *var)
 {
 	int i;
@@ -101,11 +113,7 @@ void		assign_param_dot(t_printf *var)
 	var->nb_param = 1;
 	if (var->stock_flags[i + 1])
 	{
-		if (check_nb(&var->stock_flags[i + 1]) && \
-			!check_c(&var->stock_flags[i + 1], '*'))
-			var->flag_star[1] = ft_atoi(&var->stock_flags[i + 1]);
-		else if (check_c(&var->stock_flags[i], '*'))
-			var->flag_star[1] = va_arg(var->ap, int);
+		second_param(var, i);
 		var->nb_param = 2;
 	}
 }
