@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 14:06:50 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 16:16:06 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/14 14:54:22 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,11 @@ static	int		size_str(unsigned int n)
 
 static	char	*fill_str(unsigned int n, int len, char *str)
 {
-	if (n < 0)
+	while (len)
 	{
-		n = -n;
-		while (len)
-		{
-			str[len] = n % 10 + '0';
-			n = n / 10;
-			len--;
-		}
-	}
-	else
-	{
-		while (len)
-		{
-			str[len - 1] = n % 10 + '0';
-			n = n / 10;
-			len--;
-		}
+		str[len - 1] = n % 10 + '0';
+		n = n / 10;
+		len--;
 	}
 	return (str);
 }
@@ -59,19 +46,9 @@ char			*ft_itoa_uns(unsigned int n)
 	char	*str;
 
 	len = size_str(n);
-	if (n < 0)
-	{
-		if (!(str = malloc(sizeof(*str) * (len + 2))))
-			return (NULL);
-		str[0] = '-';
-		str[len + 1] = '\0';
-	}
-	else
-	{
-		if (!(str = malloc(sizeof(*str) * (len + 1))))
-			return (NULL);
-		str[len] = '\0';
-	}
+	if (!(str = malloc(sizeof(*str) * (len + 1))))
+		return (NULL);
+	str[len] = '\0';
 	str = fill_str(n, len, str);
 	return (str);
 }

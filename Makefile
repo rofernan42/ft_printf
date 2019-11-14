@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
-#    Updated: 2019/11/14 12:20:37 by rofernan         ###   ########.fr        #
+#    Updated: 2019/11/14 15:16:40 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ SRCS_PATH			=	./srcs
 INC_PATH			=	./includes
 OBJS_PATH			=	./objs
 OBJSLIB_PATH		=	./objs
-
-BONUS_PATH			=	./bonus
-OBJS_BONUS_PATH		=	./objs
 
 LIB_NAME			=	ft_strlen.c					\
 						ft_atoi.c					\
@@ -49,15 +46,10 @@ SRCS_NAME			=	case_flags.c				\
 						print_types.c				\
 						ft_printf.c					\
 
-BONUS_NAME			=	conv_bonus.c				\
-						conversion_bonus.c			\
-						ft_printf_bonus.c			\
-
 INC_NAME			=	libftprintf.h
 
 OBJS_NAME			=	$(SRCS_NAME:.c=.o)
 OBJSLIB_NAME		=	$(LIB_NAME:.c=.o)
-OBJS_BONUS_NAME		=	$(BONUS_NAME:.c=.o)
 
 LIB					=	$(addprefix $(LIB_PATH)/, $(LIB_NAME))
 SRCS				=	$(addprefix $(SRCS_PATH)/, $(SRCS_NAME))
@@ -65,18 +57,11 @@ INC					=	$(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJS				=	$(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 OBJSLIB				=	$(addprefix $(OBJSLIB_PATH)/, $(OBJSLIB_NAME))
 
-BONUS				=	$(addprefix $(BONUS_PATH)/, $(BONUS_NAME))
-OBJS_BONUS			=	$(addprefix $(OBJS_BONUS_PATH)/, $(OBJS_BONUS_NAME))
-
 CC					=	gcc
 
 CFLAGS				=	-Wall -Wextra -Werror -I./includes
 
 all:					$(NAME)
-
-bonus:					$(OBJS) $(OBJSLIB) $(OBJS_BONUS)
-						ar rc $(NAME) $(OBJS) $(OBJSLIB) $(OBJS_BONUS)
-						ranlib $(NAME)
 
 $(NAME):				$(OBJS) $(OBJSLIB)
 						ar rc $(NAME) $(OBJS) $(OBJSLIB)
@@ -88,10 +73,6 @@ $(OBJS_PATH)/%.o:		$(SRCS_PATH)/%.c
 
 $(OBJSLIB_PATH)/%.o:	$(LIB_PATH)/%.c
 						@mkdir $(OBJSLIB_PATH) 2> /dev/null || true
-						@$(CC) -o $@ -c $<
-
-$(OBJS_BONUS_PATH)/%.o:	$(BONUS_PATH)/%.c
-						@mkdir $(OBJS_BONUS_PATH) 2> /dev/null || true
 						@$(CC) -o $@ -c $<
 
 clean:
