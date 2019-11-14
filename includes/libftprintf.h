@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/14 15:05:39 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:32:45 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,11 +138,6 @@ int					conv_e(t_printf *var);
 ** CONVERSION.C ================================================================
 */
 void				conversion_param(char c, t_printf *var);
-
-/*
-** CONVERSION_BONUS.C ==========================================================
-*/
-void				conversion_bonus(char c, t_printf *var, int *count);
 
 /*
 ** FT_PRINTF.C =================================================================
