@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
-#    Updated: 2019/11/13 14:37:35 by rofernan         ###   ########.fr        #
+#    Updated: 2019/11/14 12:20:37 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ LIB_NAME			=	ft_strlen.c					\
 						ft_itoa.c					\
 						ft_putchar_fd.c				\
 						ft_putstr_fd.c				\
-						ft_atoi_minus.c				\
 						ft_strndup.c				\
 						ft_itoa_uns.c				\
 						ft_itoa_uintptr.c			\

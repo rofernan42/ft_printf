@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/13 15:18:40 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/14 12:33:50 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	assign_and_convert(t_printf *var, int *count, char c)
 		conversion_param(c, var);
 		print_conversion(c, var, count);
 	}
+	else
+		ft_putchar_fd(c, 1, count);
 	free_var(var);
 }
 
