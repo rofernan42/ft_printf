@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/14 17:32:45 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:19:30 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ typedef	struct		s_printf
 	char			*stock_flags;
 	int				flag_star[2];
 	int				nb_param;
-	float			f;
-	char			*e;
 }					t_printf;
 
 /*

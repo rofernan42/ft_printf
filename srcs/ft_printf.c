@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 11:17:20 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/14 12:33:50 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/15 15:01:11 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ static void	assign_and_convert(t_printf *var, int *count, char c)
 		conversion_param(c, var);
 		print_conversion(c, var, count);
 	}
-	else
-		ft_putchar_fd(c, 1, count);
-	free_var(var);
 }
 
 int			ft_printf(const char *str, ...)
@@ -62,11 +59,10 @@ int			ft_printf(const char *str, ...)
 			init_var(&var);
 			i++;
 			if (str[i])
-			{
 				i = check_flags(&str[i], &var) + i;
-				assign_and_convert(&var, &count, str[i]);
-				i++;
-			}
+			if (str[i])
+				assign_and_convert(&var, &count, str[i++]);
+			free_var(&var);
 		}
 		if (str[i] && str[i] != '%')
 			ft_putchar_fd(str[i++], 1, &count);
