@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 18:28:02 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/25 16:55:03 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:19:02 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_conv_x(unsigned int nbr, char *base)
 		tmp = tmp / 16;
 		size_dest++;
 	}
-	if (!(str_nbr = malloc(sizeof(*str_nbr * (size_dest + 1)))))
+	if (!(str_nbr = malloc(sizeof(char) * (size_dest + 1))))
 		return (NULL);
 	str_nbr[size_dest] = '\0';
 	while (size_dest > 0)
@@ -50,7 +50,7 @@ char	*ft_conv_ptr(uintptr_t nbr, char *base)
 		tmp = tmp / 16;
 		size_dest++;
 	}
-	if (!(str_nbr = malloc(sizeof(*str_nbr * (size_dest + 1)))))
+	if (!(str_nbr = malloc(sizeof(char) * (size_dest + 1))))
 		return (NULL);
 	str_nbr[size_dest] = '\0';
 	while (size_dest > 0)
