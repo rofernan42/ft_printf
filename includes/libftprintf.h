@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/15 12:19:30 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:56:42 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ char				*ft_itoa_uns(unsigned int n);
 char				*ft_itoa_uintptr(uintptr_t n);
 unsigned int		ft_atoi_base(char *str, char *base);
 uintptr_t			ft_atoi_base_uintptr(char *str, char *base);
-char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
-char				*ft_convert_base_uintptr(char *nbr, char *base_from, \
-													char *base_to);
+char				*ft_conv_x(unsigned int nbr, char *base);
+char				*ft_conv_ptr(uintptr_t nbr, char *base);
 
 /*
 ** ========================== FUNCTIONS PRINTF =================================

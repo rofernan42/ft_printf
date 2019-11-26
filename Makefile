@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 15:44:33 by rofernan          #+#    #+#              #
-#    Updated: 2019/11/14 15:16:40 by rofernan         ###   ########.fr        #
+#    Updated: 2019/11/26 12:23:27 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ LIB_NAME			=	ft_strlen.c					\
 						ft_atoi_base.c				\
 						ft_atoi_base_uintptr.c		\
 						ft_convert_base.c			\
-						ft_convert_base_uintptr.c	\
 
 SRCS_NAME			=	case_flags.c				\
 						check_elem.c				\

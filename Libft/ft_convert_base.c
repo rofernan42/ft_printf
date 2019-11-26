@@ -6,87 +6,58 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 18:28:02 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/12 16:15:58 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:55:03 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	check_base(char *base)
+char	*ft_conv_x(unsigned int nbr, char *base)
 {
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	if (base[0] == '\0' || base[1] == '\0')
-		return (0);
-	while (base[i])
-	{
-		if (base[i] == ' ' || base[i] == '\f' || base[i] == '\t'
-				|| base[i] == '\n' || base[i] == '\r' || base[i] == '\v'
-				|| base[i] == '+' || base[i] == '-')
-			return (0);
-		while (base[j])
-		{
-			if (base[i] == base[j] && i != j)
-				return (0);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (1);
-}
-
-static int	ft_size_dest(char *nbr, char *base_from, char *base_to)
-{
+	char			*str_nbr;
 	int				size_dest;
-	unsigned int	nb_int;
+	unsigned int	tmp;
 
 	size_dest = 1;
-	nb_int = ft_atoi_base(nbr, base_from);
-	while ((nb_int / ft_strlen(base_to)) > 0)
+	tmp = nbr;
+	while ((tmp / 16) > 0)
 	{
-		nb_int = nb_int / ft_strlen(base_to);
+		tmp = tmp / 16;
 		size_dest++;
 	}
-	return (size_dest);
-}
-
-static char	*ft_dest_nbr(unsigned int nb_int, int size_dest, \
-						char *base_to, char *dest_nbr)
-{
+	if (!(str_nbr = malloc(sizeof(*str_nbr * (size_dest + 1)))))
+		return (NULL);
+	str_nbr[size_dest] = '\0';
 	while (size_dest > 0)
 	{
-		dest_nbr[size_dest - 1] = base_to[nb_int % ft_strlen(base_to)];
-		nb_int = nb_int / ft_strlen(base_to);
+		str_nbr[size_dest - 1] = base[nbr % 16];
+		nbr = nbr / 16;
 		size_dest--;
 	}
-	return (dest_nbr);
+	return (str_nbr);
 }
 
-char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char	*ft_conv_ptr(uintptr_t nbr, char *base)
 {
-	char			*dest_nbr;
-	int				size_dest;
-	unsigned int	nb_int;
+	char		*str_nbr;
+	int			size_dest;
+	uintptr_t	tmp;
 
-	if (!check_base(base_from) || !check_base(base_to))
+	size_dest = 1;
+	tmp = nbr;
+	while ((tmp / 16) > 0)
+	{
+		tmp = tmp / 16;
+		size_dest++;
+	}
+	if (!(str_nbr = malloc(sizeof(*str_nbr * (size_dest + 1)))))
 		return (NULL);
-	size_dest = ft_size_dest(nbr, base_from, base_to);
-	nb_int = ft_atoi_base(nbr, base_from);
-	if (nb_int < 0)
+	str_nbr[size_dest] = '\0';
+	while (size_dest > 0)
 	{
-		dest_nbr = malloc(sizeof(*dest_nbr) * (size_dest + 2));
-		dest_nbr[0] = '-';
-		dest_nbr[size_dest + 1] = '\0';
+		str_nbr[size_dest - 1] = base[nbr % 16];
+		nbr = nbr / 16;
+		size_dest--;
 	}
-	else
-	{
-		dest_nbr = malloc(sizeof(*dest_nbr) * (size_dest + 1));
-		dest_nbr[size_dest] = '\0';
-	}
-	dest_nbr = ft_dest_nbr(nb_int, size_dest, base_to, dest_nbr);
-	return (dest_nbr);
+	return (str_nbr);
 }
