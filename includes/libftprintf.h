@@ -6,7 +6,7 @@
 /*   By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:37:56 by rofernan          #+#    #+#             */
-/*   Updated: 2019/11/25 16:56:42 by rofernan         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:53:47 by rofernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ void				ft_putstr_fd(char *s, int fd, int *count);
 int					ft_atoi_minus(const char *str);
 char				*ft_strndup(const char *src, size_t n);
 char				*ft_itoa_uns(unsigned int n);
-char				*ft_itoa_uintptr(uintptr_t n);
-unsigned int		ft_atoi_base(char *str, char *base);
-uintptr_t			ft_atoi_base_uintptr(char *str, char *base);
 char				*ft_conv_x(unsigned int nbr, char *base);
 char				*ft_conv_ptr(uintptr_t nbr, char *base);
 
@@ -125,11 +122,12 @@ int					conv_pcent(t_printf *var);
 
 /*
 ** CONV_BONUS.C ================================================================
+**
+**int					conv_n(t_printf *var, int *count);
+**int					conv_f(t_printf *var);
+**int					conv_g(t_printf *var);
+**int					conv_e(t_printf *var);
 */
-int					conv_n(t_printf *var, int *count);
-int					conv_f(t_printf *var);
-int					conv_g(t_printf *var);
-int					conv_e(t_printf *var);
 
 /*
 ** CONVERSION.C ================================================================
